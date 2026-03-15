@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FREE Sales Machine • one taste</title>
+    <style>
+        /* ultra clean, fast, zero junk */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f7f3ef;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.3;
+            color: #1c1c1c;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .container {
+            max-width: 530px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.02), 0 8px 20px rgba(0, 0, 0, 0.01);
+            padding: 40px 32px 48px;
+            text-align: center;
+            border: 1px solid #eee7e0;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: #1e1a16;
+            max-width: 450px;
+            margin: 0 auto 16px;
+        }
+
+        /* FREE Sales Machine – DICK & AUFFÄLLIG */
+        .free-machine {
+            display: inline-block;
+            background: #1e1a16;
+            color: white;
+            font-weight: 620;
+            font-size: 42px;
+            letter-spacing: -0.02em;
+            padding: 6px 24px 10px 24px;
+            border-radius: 100px;
+            margin: 12px 0 20px;
+            box-shadow: 0 12px 25px -8px rgba(30, 26, 22, 0.3);
+            border: 2px solid #f5b885;
+            text-transform: uppercase;
+            line-height: 1.1;
+            transform: scale(1);
+            transition: transform 0.2s ease;
+        }
+
+        .free-machine:hover {
+            transform: scale(1.02);
+        }
+
+        .free-machine span {
+            font-size: 24px;
+            font-weight: 400;
+            margin-right: 6px;
+            opacity: 0.9;
+        }
+
+        .sub {
+            font-size: 18px;
+            color: #5f554b;
+            margin-bottom: 28px;
+            font-weight: 380;
+            max-width: 380px;
+            margin-left: auto;
+            margin-right: auto;
+            border-bottom: 1px solid #f0e9e2;
+            padding-bottom: 28px;
+        }
+
+        .form-wrapper {
+            margin-top: 8px;
+        }
+
+        .email-field {
+            width: 100%;
+            padding: 20px 24px;
+            font-size: 18px;
+            border: 1px solid #ddd3c9;
+            border-radius: 60px;
+            background: white;
+            outline: none;
+            transition: all 0.15s ease;
+            text-align: center;
+            font-weight: 380;
+            color: #1f1b17;
+            margin-bottom: 14px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .email-field:focus {
+            border-color: #c47030;
+            box-shadow: 0 0 0 4px rgba(196, 112, 48, 0.1), inset 0 1px 4px rgba(0,0,0,0.02);
+        }
+
+        .email-field::placeholder {
+            color: #b1a79d;
+            font-weight: 350;
+            font-size: 17px;
+        }
+
+        .btn {
+            background: #1e1a16;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 22px 24px;
+            font-size: 20px;
+            font-weight: 520;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: background 0.12s ease, transform 0.1s ease;
+            letter-spacing: -0.01em;
+            box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,255,255,0.05);
+            margin: 8px 0 20px;
+        }
+
+        .btn:hover {
+            background: #322c26;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .fine-print {
+            font-size: 13px;
+            color: #a69e95;
+            letter-spacing: 0.2px;
+            font-weight: 370;
+            border-top: 1px solid #f0eae3;
+            padding-top: 28px;
+            margin-top: 12px;
+        }
+
+        .fine-print span {
+            color: #7a6e62;
+        }
+
+        /* hidden fields */
+        .hidden-fields {
+            display: none;
+        }
+
+        /* kleiner verzierung */
+        .badge {
+            display: inline-block;
+            background: #f4efe9;
+            border-radius: 30px;
+            padding: 6px 18px 7px;
+            font-size: 13px;
+            color: #5f554b;
+            margin-bottom: 20px;
+            font-weight: 440;
+            letter-spacing: 0.3px;
+            border: 1px solid #e6ded5;
+        }
+
+        /* free word extra fett */
+        .free-word {
+            font-size: 52px;
+            font-weight: 700;
+            background: linear-gradient(145deg, #2b2b2b, #1f1b17);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- badge mit emotion -->
+        <div class="badge">🍫 ONE TASTE · HOOKED</div>
+
+        <!-- Headline first line -->
+        <h1>One taste of passive income<br>and you'll be hooked.</h1>
+
+        <!-- FREE SALES MACHINE – richtig DICK & FETT -->
+        <div class="free-machine">
+            <span>⚡</span> FREE <span style="font-weight:300; margin:0 2px;">·</span> SALES MACHINE
+        </div>
+
+        <!-- subtile line -->
+        <div class="sub">no credit card · instant access · pure indulgence</div>
+
+        <!-- FORM: only email, source = salesmachine -->
+        <div class="form-wrapper">
+            <form method="post" action="https://www.sendsteed.com/subscribe/">
+                <!-- NUR EMAIL (kein name feld sichtbar) -->
+                <input type="email" name="e123432" required placeholder="your@email.com" class="email-field" autocomplete="email" spellcheck="false">
+                
+                <!-- hidden fields exakt wie angegeben + source -->
+                <input type="hidden" name="n123432" value="">
+                <input type="hidden" name="lllid" value="123432">
+                <input type="hidden" name="lluid" value="sandyarta">
+                <input type="hidden" name="redirect" value="">
+                <input type="hidden" name="source" value="salesmachine">
+                
+                <button type="submit" class="btn">→ Get my FREE Sales Machine ←</button>
+            </form>
+        </div>
+
+        <!-- ultra fast hint -->
+        <div class="fine-print">
+            <span>⚡ zero fluff · one click · loads instantly</span>
+        </div>
+    </div>
+
+    <!-- kleiner schutz vor doppelklick (optional) -->
+    <script>
+        (function() {
+            const form = document.querySelector('form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    const btn = form.querySelector('button[type="submit"]');
+                    if (btn && btn.disabled) {
+                        e.preventDefault();
+                    } else if (btn) {
+                        btn.disabled = true;
+                        btn.innerText = '⏳ opening ...';
+                    }
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
