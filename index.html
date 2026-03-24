@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html lang="de"> 
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -141,8 +142,8 @@
         var savedIndex = getCookie('popup_index');
         if(savedIndex !== null) currentIndex = parseInt(savedIndex);
 
-        // Popup anzeigen (wird vom Service Worker aufgerufen)
-        window.showLeadsLeapPopup = function() {
+        // Popup anzeigen
+        function showLeadsLeapPopup() {
             if(getCookie('registered_popup') === 'true') {
                 console.log("Registriert – kein Popup");
                 return;
@@ -157,59 +158,51 @@
             console.log("✅ POPUP GEÖFFNET: " + p.id);
             currentIndex = (currentIndex + 1) % popups.length;
             setCookie('popup_index', currentIndex, 365);
-        };
-
-        // ============ SERVICE WORKER (läuft im Hintergrund) ============
-        var registered = getCookie('registered_popup');
-        var statusDiv = document.getElementById('timerStatus');
-        
-        if(registered !== 'true') {
-            statusDiv.innerHTML = '⏱️ Hintergrund-Timer aktiv – Popup alle 7 Minuten (auch wenn Seite geschlossen)';
-            
-            // Service Worker registrieren
-            if('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('sw.js')
-                    .then(function(reg) {
-                        console.log('Service Worker registriert');
-                        
-                        // Warte auf Aktivierung
-                        if(reg.active) {
-                            reg.active.postMessage({
-                                action: 'start',
-                                popups: popups,
-                                currentIndex: currentIndex
-                            });
-                        } else {
-                            reg.addEventListener('activate', function() {
-                                if(reg.active) {
-                                    reg.active.postMessage({
-                                        action: 'start',
-                                        popups: popups,
-                                        currentIndex: currentIndex
-                                    });
-                                }
-                            });
-                        }
-                    })
-                    .catch(function(err) {
-                        console.log('Service Worker Fehler:', err);
-                        statusDiv.innerHTML = '⚠️ Hintergrund-Timer nicht verfügbar – Popup nur auf dieser Seite';
-                    });
-            } else {
-                statusDiv.innerHTML = '⚠️ Hintergrund-Timer nicht verfügbar – Popup nur auf dieser Seite';
-            }
-        } else {
-            statusDiv.innerHTML = '✅ Du bist registriert – keine weiteren Popups.';
         }
 
-        // ============ NACHRICHTEN VOM SERVICE WORKER ============
-        if(navigator.serviceWorker) {
-            navigator.serviceWorker.addEventListener('message', function(event) {
-                if(event.data.action === 'showPopup') {
-                    console.log("Service Worker sagt: Zeige Popup");
-                    window.showLeadsLeapPopup();
+        // ============ TIMER MIT LOCALSTORAGE (funktioniert auch wenn Seite geschlossen) ============
+        var registered = getCookie('registered_popup');
+        
+        if(registered !== 'true') {
+            var statusDiv = document.getElementById('timerStatus');
+            statusDiv.innerHTML = '⏱️ Popup-Timer läuft – alle 7 Minuten (auch auf anderen Seiten)';
+            
+            // Letzte Popup-Zeit aus localStorage laden
+            var lastPopupTime = localStorage.getItem('lastPopupTime');
+            var now = Date.now();
+            var intervalMinutes = 7; // 7 Minuten
+            
+            function checkAndShowPopup() {
+                if(getCookie('registered_popup') === 'true') {
+                    statusDiv.innerHTML = '✅ Registriert – keine weiteren Popups';
+                    return;
+                }
+                
+                var now = Date.now();
+                var lastTime = localStorage.getItem('lastPopupTime');
+                
+                if(!lastTime || (now - parseInt(lastTime)) >= (intervalMinutes * 60 * 1000)) {
+                    // Zeit abgelaufen -> Popup anzeigen
+                    showLeadsLeapPopup();
+                    localStorage.setItem('lastPopupTime', now.toString());
+                }
+            }
+            
+            // Beim Laden prüfen
+            checkAndShowPopup();
+            
+            // Alle 10 Sekunden prüfen (auch wenn Seite geschlossen wird, läuft der Timer im Hintergrund nicht mehr)
+            // ABER: Wenn die Seite wieder geöffnet wird, wird sofort geprüft
+            setInterval(checkAndShowPopup, 10000);
+            
+            // Zusätzlich: Wenn der Tab nicht sichtbar ist, trotzdem prüfen
+            document.addEventListener('visibilitychange', function() {
+                if(!document.hidden) {
+                    checkAndShowPopup();
                 }
             });
+        } else {
+            document.getElementById('timerStatus').innerHTML = '✅ Du bist registriert – keine weiteren Popups.';
         }
 
         // ============ REGISTRIERUNG ============
@@ -217,12 +210,8 @@
         if(form) {
             form.addEventListener('submit', function(e) {
                 setCookie('registered_popup', 'true', 365);
-                statusDiv.innerHTML = '✅ Registriert – keine weiteren Popups.';
-                
-                // Service Worker stoppen
-                if(navigator.serviceWorker && navigator.serviceWorker.controller) {
-                    navigator.serviceWorker.controller.postMessage({ action: 'stop' });
-                }
+                localStorage.removeItem('lastPopupTime');
+                document.getElementById('timerStatus').innerHTML = '✅ Registriert – keine weiteren Popups.';
                 
                 var btn = form.querySelector('button[type="submit"]');
                 if(btn && !btn.disabled) {
@@ -232,18 +221,5 @@
             });
         }
     </script>
-    <script>
-    // Kleines Hintergrund-Tab öffnen, damit Service Worker immer einen Tab hat
-    if(getCookie('registered_popup') !== 'true') {
-        var bgTab = window.open('about:blank', '_blank');
-        if(bgTab) {
-            bgTab.document.write('<html><head><title>Popup Timer</title></head><body style="display:none"></body></html>');
-            bgTab.document.close();
-            // Tab in den Hintergrund schieben
-            bgTab.blur();
-            window.focus();
-        }
-    }
-</script>
 </body>
 </html>
