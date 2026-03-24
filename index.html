@@ -175,16 +175,6 @@
             letter-spacing: 0.3px;
             border: 1px solid #e6ded5;
         }
-
-        /* free word extra fett */
-        .free-word {
-            font-size: 52px;
-            font-weight: 700;
-            background: linear-gradient(145deg, #2b2b2b, #1f1b17);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }
     </style>
 </head>
 <body>
@@ -226,22 +216,271 @@
         </div>
     </div>
 
-    <!-- kleiner schutz vor doppelklick (optional) -->
     <script>
-        (function() {
-            const form = document.querySelector('form');
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    const btn = form.querySelector('button[type="submit"]');
-                    if (btn && btn.disabled) {
-                        e.preventDefault();
-                    } else if (btn) {
-                        btn.disabled = true;
-                        btn.innerText = '⏳ opening ...';
-                    }
-                });
+        // ============ COOKIE FUNKTIONEN ============
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
             }
-        })();
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+        
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for(var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+        
+        function deleteCookie(name) {
+            setCookie(name, '', -1);
+        }
+        
+        // ============ DEINE 5 LEADSLEAP POPUPS ============
+        var popups = [
+            { id: 'llscript39468', src: 'https://pjs.leadsleap.net/js.js?c=39468&u=sandyarta' },
+            { id: 'llscript39465', src: 'https://pjs.leadsleap.net/js.js?c=39465&u=sandyarta' },
+            { id: 'llscript39423', src: 'https://pjs.leadsleap.net/js.js?c=39423&u=sandyarta' },
+            { id: 'llscript39402', src: 'https://pjs.leadsleap.net/js.js?c=39402&u=sandyarta' },
+            { id: 'llscript39261', src: 'https://pjs.leadsleap.net/js.js?c=39261&u=sandyarta' },
+            { id: 'llscript30375', src: 'https://pjs.leadsleap.net/js.js?c=30375&u=sandyarta' }
+        ];
+        
+        var currentPopupIndex = 0;
+        
+        // Popup anzeigen (rotierend)
+        function showNextPopup() {
+            // Prüfen ob registriert
+            if(getCookie('registered_popup') === 'true') {
+                return;
+            }
+            
+            // Aktuelles Popup holen
+            var popup = popups[currentPopupIndex];
+            
+            // Altes Popup-Script entfernen (falls vorhanden)
+            var oldScript = document.getElementById(popup.id);
+            if(oldScript) {
+                oldScript.remove();
+            }
+            
+            // Neues Popup-Script einfügen
+            var script = document.createElement('script');
+            script.id = popup.id;
+            script.src = popup.src;
+            document.body.appendChild(script);
+            
+            console.log("Popup " + (currentPopupIndex + 1) + " wird angezeigt: " + popup.id);
+            
+            // Nächsten Popup-Index für nächstes Mal
+            currentPopupIndex = (currentPopupIndex + 1) % popups.length;
+            
+            // Index im Cookie speichern für nächsten Timer-Durchlauf
+            setCookie('popup_index', currentPopupIndex, 365);
+        }
+        
+        // ============ TIMER FENSTER ÖFFNEN ============
+        var registered = getCookie('registered_popup');
+        
+        if(registered !== 'true') {
+            // Gespeicherten Popup-Index laden
+            var savedIndex = getCookie('popup_index');
+            if(savedIndex !== null) {
+                currentPopupIndex = parseInt(savedIndex);
+            }
+            
+            // Prüfen ob Timer-Fenster schon offen ist
+            var timerWindow = null;
+            
+            // Versuche existierendes Fenster zu finden
+            try {
+                timerWindow = window.open('', 'PopupTimerWindow');
+                if(timerWindow && timerWindow.closed) {
+                    timerWindow = null;
+                }
+            } catch(e) {
+                timerWindow = null;
+            }
+            
+            // Wenn kein Fenster offen, neues öffnen
+            if(!timerWindow) {
+                // Kleines Fenster öffnen (läuft dauerhaft im Hintergrund)
+                timerWindow = window.open('', 'PopupTimerWindow', 
+                    'width=200,height=150,left=100,top=100,menubar=no,toolbar=no,location=no');
+                
+                if(timerWindow) {
+                    // HTML ins Timer-Fenster schreiben
+                    timerWindow.document.write(`
+                        <!DOCTYPE html>
+                        <html>
+                        <head>
+                            <title>Popup Timer</title>
+                            <style>
+                                body {
+                                    font-family: Arial, sans-serif;
+                                    text-align: center;
+                                    padding: 15px;
+                                    background: #1e1a16;
+                                    color: white;
+                                    margin: 0;
+                                }
+                                .timer {
+                                    font-size: 32px;
+                                    font-weight: bold;
+                                    color: #f5b885;
+                                    margin: 15px 0;
+                                }
+                                .status {
+                                    font-size: 11px;
+                                    color: #a69e95;
+                                }
+                                .small {
+                                    font-size: 10px;
+                                    margin-top: 10px;
+                                    color: #5f554b;
+                                }
+                            </style>
+                        </head>
+                        <body>
+                            <div>⏱️ POPUP TIMER AKTIV</div>
+                            <div class="timer" id="timer">07:00</div>
+                            <div class="status">Popup alle 7 Minuten<br>auch auf anderen Seiten!</div>
+                            <div class="small">⚡ rotiert durch 6 Popups</div>
+                        </body>
+                        </html>
+                    `);
+                    timerWindow.document.close();
+                    
+                    // Timer-Fenster in den Hintergrund
+                    timerWindow.blur();
+                    window.focus();
+                }
+            }
+            
+            // Funktion um Popup im Timer-Fenster zu triggern
+            if(timerWindow && !timerWindow.closed) {
+                // Timer im Timer-Fenster starten
+                var timerScript = timerWindow.document.createElement('script');
+                timerScript.textContent = `
+                    // COOKIE FUNKTIONEN
+                    function getCookie(name) {
+                        var nameEQ = name + "=";
+                        var ca = document.cookie.split(';');
+                        for(var i = 0; i < ca.length; i++) {
+                            var c = ca[i];
+                            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                        }
+                        return null;
+                    }
+                    
+                    function setCookie(name, value, days) {
+                        var expires = "";
+                        if (days) {
+                            var date = new Date();
+                            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                            expires = "; expires=" + date.toUTCString();
+                        }
+                        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+                    }
+                    
+                    var minutes = 7;
+                    var seconds = 0;
+                    var timerRunning = true;
+                    
+                    function updateDisplay() {
+                        var timerElem = document.getElementById('timer');
+                        if(timerElem) {
+                            var timeString = (minutes < 10 ? '0' + minutes : minutes) + ':' + (seconds < 10 ? '0' + seconds : seconds);
+                            timerElem.innerText = timeString;
+                        }
+                    }
+                    
+                    function showPopupInMainWindow() {
+                        if(getCookie('registered_popup') === 'true') {
+                            window.close();
+                            return;
+                        }
+                        // Hauptfenster finden und Popup triggern
+                        if(window.opener && !window.opener.closed) {
+                            window.opener.showNextPopup();
+                        }
+                    }
+                    
+                    function startTimer() {
+                        setInterval(function() {
+                            if(getCookie('registered_popup') === 'true') {
+                                window.close();
+                                return;
+                            }
+                            
+                            if(minutes === 0 && seconds === 0) {
+                                showPopupInMainWindow();
+                                minutes = 7;
+                                seconds = 0;
+                                updateDisplay();
+                            } else {
+                                if(seconds === 0) {
+                                    minutes--;
+                                    seconds = 59;
+                                } else {
+                                    seconds--;
+                                }
+                                updateDisplay();
+                            }
+                        }, 1000);
+                    }
+                    
+                    startTimer();
+                    
+                    // Alle 3 Sekunden prüfen ob registriert
+                    setInterval(function() {
+                        if(getCookie('registered_popup') === 'true') {
+                            window.close();
+                        }
+                    }, 3000);
+                `;
+                timerWindow.document.body.appendChild(timerScript);
+            }
+        }
+        
+        // ============ REGISTRIERUNG ERKENNEN ============
+        // Wenn das Formular abgeschickt wird, registrierung cookie setzen
+        var form = document.querySelector('form');
+        if(form) {
+            form.addEventListener('submit', function(e) {
+                // Cookie setzen dass registriert
+                setCookie('registered_popup', 'true', 365);
+                console.log("Registrierung erkannt - Popups werden gestoppt");
+                
+                // Timer-Fenster schließen
+                try {
+                    var timerWin = window.open('', 'PopupTimerWindow');
+                    if(timerWin && !timerWin.closed) {
+                        timerWin.close();
+                    }
+                } catch(e) {}
+                
+                // Button disabled verhindern (original code)
+                var btn = form.querySelector('button[type="submit"]');
+                if (btn && btn.disabled) {
+                    e.preventDefault();
+                } else if (btn) {
+                    btn.disabled = true;
+                    btn.innerText = '⏳ opening ...';
+                }
+            });
+        }
+        
+        // ShowNextPopup Funktion global machen für Timer-Fenster
+        window.showNextPopup = showNextPopup;
     </script>
 </body>
 </html>
