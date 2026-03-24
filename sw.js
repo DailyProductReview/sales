@@ -1,37 +1,22 @@
-// sw.js – läuft DAUERHAFT im Hintergrund (auch wenn Seite geschlossen)
+// sw.js – läuft DAUERHAFT IM HINTERGRUND (auch wenn Seite geschlossen)
+
 let timerInterval = null;
-let registered = false; 
+let isRegistered = false;
 let popupList = [];
 let popupIndex = 0;
 let minutes = 7;
 let seconds = 0;
 
-// Cookie auslesen im Service Worker
-function getCookie(name) {
-    return new Promise((resolve) => {
-        chrome.cookies ? chrome.cookies.get({url: self.location.origin, name: name}, (c) => resolve(c ? c.value : null))
-            : resolve(null);
-    });
-}
-
-// Vereinfachte Cookie-Funktion für Service Worker (eigene Implementierung)
-function getCookieSimple(name) {
-    return new Promise((resolve) => {
-        self.clients.matchAll().then(clients => {
-            if(clients.length > 0) {
-                clients[0].postMessage({ action: 'getCookie', name: name });
-            }
-            resolve(null);
-        });
-    });
-}
-
 // Popup im aktiven Tab anzeigen
-function showPopup() {
+function showPopupInClient() {
     self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(clients => {
         if(clients.length > 0) {
-            clients[0].postMessage({ action: 'showPopup', popupIndex: popupIndex });
-            popupIndex = (popupIndex + 1) % popupList.length;
+            clients.forEach(client => {
+                client.postMessage({ action: 'showPopup' });
+            });
+            // Index für Rotation weiterzählen (wird in der Hauptseite gemacht)
+        } else {
+            console.log("Kein Fenster offen – Timer läuft weiter");
         }
     });
 }
@@ -41,14 +26,15 @@ function startTimer() {
     if(timerInterval) clearInterval(timerInterval);
     
     timerInterval = setInterval(() => {
-        if(registered) {
-            clearInterval(timerInterval);
+        if(isRegistered) {
+            if(timerInterval) clearInterval(timerInterval);
             timerInterval = null;
             return;
         }
         
         if(minutes === 0 && seconds === 0) {
-            showPopup();
+            console.log("7 Minuten abgelaufen – zeige Popup");
+            showPopupInClient();
             minutes = 7;
             seconds = 0;
         } else {
@@ -64,36 +50,28 @@ function startTimer() {
 
 // Nachrichten vom Hauptfenster empfangen
 self.addEventListener('message', (event) => {
-    if(event.data.action === 'startTimer') {
+    if(event.data.action === 'start') {
         popupList = event.data.popups;
         popupIndex = event.data.currentIndex || 0;
+        console.log("Service Worker gestartet – Timer läuft");
         startTimer();
-    } else if(event.data.action === 'stopTimer') {
-        registered = true;
+    } else if(event.data.action === 'stop') {
+        isRegistered = true;
         if(timerInterval) {
             clearInterval(timerInterval);
             timerInterval = null;
         }
-    } else if(event.data.action === 'getCookieResponse') {
-        if(event.data.name === 'registered_popup' && event.data.value === 'true') {
-            registered = true;
-            if(timerInterval) clearInterval(timerInterval);
-        }
-    }
-});
-
-// Beim Start prüfen, ob schon registriert (über Hauptfenster)
-self.clients.matchAll().then(clients => {
-    if(clients.length > 0) {
-        clients[0].postMessage({ action: 'checkRegistered' });
+        console.log("Service Worker gestoppt");
     }
 });
 
 // Service Worker installieren und aktivieren
 self.addEventListener('install', (event) => {
+    console.log("Service Worker installiert");
     self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
+    console.log("Service Worker aktiviert");
     event.waitUntil(self.clients.claim());
 });
