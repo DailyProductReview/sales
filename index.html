@@ -1,17 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FREE Sales Machine • one taste</title>
     <style> 
-        /* ultra clean, fast, zero junk */
-        * { 
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background: #f7f3ef;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -23,7 +17,6 @@
             justify-content: center;
             padding: 16px;
         }
-
         .container {
             max-width: 530px;
             width: 100%;
@@ -34,135 +27,44 @@
             text-align: center;
             border: 1px solid #eee7e0;
         }
-
-        h1 {
-            font-size: 36px;
-            font-weight: 500;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
-            color: #1e1a16;
-            max-width: 450px;
-            margin: 0 auto 16px;
-        }
-
-        /* FREE Sales Machine – DICK & AUFFÄLLIG */
+        h1 { font-size: 36px; font-weight: 500; line-height: 1.2; color: #1e1a16; max-width: 450px; margin: 0 auto 16px; }
         .free-machine {
             display: inline-block;
             background: #1e1a16;
             color: white;
             font-weight: 620;
             font-size: 42px;
-            letter-spacing: -0.02em;
             padding: 6px 24px 10px 24px;
             border-radius: 100px;
             margin: 12px 0 20px;
-            box-shadow: 0 12px 25px -8px rgba(30, 26, 22, 0.3);
             border: 2px solid #f5b885;
             text-transform: uppercase;
-            line-height: 1.1;
-            transform: scale(1);
-            transition: transform 0.2s ease;
         }
-
-        .free-machine:hover {
-            transform: scale(1.02);
-        }
-
-        .free-machine span {
-            font-size: 24px;
-            font-weight: 400;
-            margin-right: 6px;
-            opacity: 0.9;
-        }
-
-        .sub {
-            font-size: 18px;
-            color: #5f554b;
-            margin-bottom: 28px;
-            font-weight: 380;
-            max-width: 380px;
-            margin-left: auto;
-            margin-right: auto;
-            border-bottom: 1px solid #f0e9e2;
-            padding-bottom: 28px;
-        }
-
-        .form-wrapper {
-            margin-top: 8px;
-        }
-
+        .free-machine span { font-size: 24px; font-weight: 400; margin-right: 6px; opacity: 0.9; }
+        .sub { font-size: 18px; color: #5f554b; margin-bottom: 28px; border-bottom: 1px solid #f0e9e2; padding-bottom: 28px; }
         .email-field {
             width: 100%;
             padding: 20px 24px;
             font-size: 18px;
             border: 1px solid #ddd3c9;
             border-radius: 60px;
-            background: white;
-            outline: none;
-            transition: all 0.15s ease;
             text-align: center;
-            font-weight: 380;
-            color: #1f1b17;
             margin-bottom: 14px;
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
+            box-sizing: border-box;
         }
-
-        .email-field:focus {
-            border-color: #c47030;
-            box-shadow: 0 0 0 4px rgba(196, 112, 48, 0.1), inset 0 1px 4px rgba(0,0,0,0.02);
-        }
-
-        .email-field::placeholder {
-            color: #b1a79d;
-            font-weight: 350;
-            font-size: 17px;
-        }
-
         .btn {
             background: #1e1a16;
             color: white;
-            border: none;
             width: 100%;
             padding: 22px 24px;
             font-size: 20px;
-            font-weight: 520;
             border-radius: 60px;
             cursor: pointer;
-            transition: background 0.12s ease, transform 0.1s ease;
-            letter-spacing: -0.01em;
-            box-shadow: 0 10px 22px rgba(0,0,0,0.08);
-            border: 1px solid rgba(255,255,255,0.05);
             margin: 8px 0 20px;
+            border: none;
         }
-
-        .btn:hover {
-            background: #322c26;
-        }
-
-        .btn:active {
-            transform: scale(0.98);
-        }
-
-        .fine-print {
-            font-size: 13px;
-            color: #a69e95;
-            letter-spacing: 0.2px;
-            font-weight: 370;
-            border-top: 1px solid #f0eae3;
-            padding-top: 28px;
-            margin-top: 12px;
-        }
-
-        .fine-print span {
-            color: #7a6e62;
-        }
-
-        /* hidden fields */
-        .hidden-fields {
-            display: none;
-        }
-
-        /* kleiner verzierung */
+        .btn:hover { background: #322c26; }
+        .fine-print { font-size: 13px; color: #a69e95; border-top: 1px solid #f0eae3; padding-top: 28px; margin-top: 12px; }
         .badge {
             display: inline-block;
             background: #f4efe9;
@@ -171,53 +73,38 @@
             font-size: 13px;
             color: #5f554b;
             margin-bottom: 20px;
-            font-weight: 440;
-            letter-spacing: 0.3px;
-            border: 1px solid #e6ded5;
+        }
+        .status-timer {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #b1a79d;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- badge mit emotion -->
         <div class="badge">🍫 ONE TASTE · HOOKED</div>
-
-        <!-- Headline first line -->
         <h1>One taste of passive income<br>and you'll be hooked.</h1>
-
-        <!-- FREE SALES MACHINE – richtig DICK & FETT -->
-        <div class="free-machine">
-            <span>⚡</span> FREE <span style="font-weight:300; margin:0 2px;">·</span> SALES MACHINE
-        </div>
-
-        <!-- subtile line -->
+        <div class="free-machine"><span>⚡</span> FREE <span style="font-weight:300;">·</span> SALES MACHINE</div>
         <div class="sub">no credit card · instant access · pure indulgence</div>
-
-        <!-- FORM: only email, source = salesmachine -->
+        
         <div class="form-wrapper">
-            <form method="post" action="https://www.sendsteed.com/subscribe/">
-                <!-- NUR EMAIL (kein name feld sichtbar) -->
-                <input type="email" name="e123432" required placeholder="your@email.com" class="email-field" autocomplete="email" spellcheck="false">
-                
-                <!-- hidden fields exakt wie angegeben + source -->
+            <form id="signupForm" method="post" action="https://www.sendsteed.com/subscribe/">
+                <input type="email" name="e123432" required placeholder="your@email.com" class="email-field" autocomplete="email">
                 <input type="hidden" name="n123432" value="">
                 <input type="hidden" name="lllid" value="123432">
                 <input type="hidden" name="lluid" value="sandyarta">
                 <input type="hidden" name="redirect" value="">
                 <input type="hidden" name="source" value="salesmachine">
-                
                 <button type="submit" class="btn">→ Get my FREE Sales Machine ←</button>
             </form>
         </div>
-
-        <!-- ultra fast hint -->
-        <div class="fine-print">
-            <span>⚡ zero fluff · one click · loads instantly</span>
-        </div>
+        <div class="fine-print"><span>⚡ zero fluff · one click · loads instantly</span></div>
+        <div class="status-timer" id="timerStatus"></div>
     </div>
 
     <script>
-        // ============ COOKIE FUNKTIONEN ============
+        // ============ COOKIES ============
         function setCookie(name, value, days) {
             var expires = "";
             if (days) {
@@ -238,12 +125,8 @@
             }
             return null;
         }
-        
-        function deleteCookie(name) {
-            setCookie(name, '', -1);
-        }
-        
-        // ============ DEINE 5 LEADSLEAP POPUPS ============
+
+        // ============ DEINE 6 LEADSLEAP POPUPS ============
         var popups = [
             { id: 'llscript39468', src: 'https://pjs.leadsleap.net/js.js?c=39468&u=sandyarta' },
             { id: 'llscript39465', src: 'https://pjs.leadsleap.net/js.js?c=39465&u=sandyarta' },
@@ -253,234 +136,109 @@
             { id: 'llscript30375', src: 'https://pjs.leadsleap.net/js.js?c=30375&u=sandyarta' }
         ];
         
-        var currentPopupIndex = 0;
-        
-        // Popup anzeigen (rotierend)
-        function showNextPopup() {
-            // Prüfen ob registriert
-            if(getCookie('registered_popup') === 'true') {
-                return;
-            }
-            
-            // Aktuelles Popup holen
-            var popup = popups[currentPopupIndex];
-            
-            // Altes Popup-Script entfernen (falls vorhanden)
-            var oldScript = document.getElementById(popup.id);
-            if(oldScript) {
-                oldScript.remove();
-            }
-            
-            // Neues Popup-Script einfügen
-            var script = document.createElement('script');
-            script.id = popup.id;
-            script.src = popup.src;
-            document.body.appendChild(script);
-            
-            console.log("Popup " + (currentPopupIndex + 1) + " wird angezeigt: " + popup.id);
-            
-            // Nächsten Popup-Index für nächstes Mal
-            currentPopupIndex = (currentPopupIndex + 1) % popups.length;
-            
-            // Index im Cookie speichern für nächsten Timer-Durchlauf
-            setCookie('popup_index', currentPopupIndex, 365);
+        var currentIndex = 0;
+        var savedIndex = getCookie('popup_index');
+        if(savedIndex !== null) currentIndex = parseInt(savedIndex);
+
+        // Popup anzeigen
+        function showLeadsLeapPopup() {
+            if(getCookie('registered_popup') === 'true') return;
+            var p = popups[currentIndex % popups.length];
+            var old = document.getElementById(p.id);
+            if(old) old.remove();
+            var s = document.createElement('script');
+            s.id = p.id;
+            s.src = p.src;
+            document.body.appendChild(s);
+            currentIndex = (currentIndex + 1) % popups.length;
+            setCookie('popup_index', currentIndex, 365);
+            console.log("Popup angezeigt: " + p.id);
         }
-        
-        // ============ TIMER FENSTER ÖFFNEN ============
-        var registered = getCookie('registered_popup');
-        
-        if(registered !== 'true') {
-            // Gespeicherten Popup-Index laden
-            var savedIndex = getCookie('popup_index');
-            if(savedIndex !== null) {
-                currentPopupIndex = parseInt(savedIndex);
-            }
-            
-            // Prüfen ob Timer-Fenster schon offen ist
-            var timerWindow = null;
-            
-            // Versuche existierendes Fenster zu finden
-            try {
-                timerWindow = window.open('', 'PopupTimerWindow');
-                if(timerWindow && timerWindow.closed) {
-                    timerWindow = null;
-                }
-            } catch(e) {
-                timerWindow = null;
-            }
-            
-            // Wenn kein Fenster offen, neues öffnen
-            if(!timerWindow) {
-                // Kleines Fenster öffnen (läuft dauerhaft im Hintergrund)
-                timerWindow = window.open('', 'PopupTimerWindow', 
-                    'width=200,height=150,left=100,top=100,menubar=no,toolbar=no,location=no');
-                
-                if(timerWindow) {
-                    // HTML ins Timer-Fenster schreiben
-                    timerWindow.document.write(`
-                        <!DOCTYPE html>
-                        <html>
-                        <head>
-                            <title>Popup Timer</title>
-                            <style>
-                                body {
-                                    font-family: Arial, sans-serif;
-                                    text-align: center;
-                                    padding: 15px;
-                                    background: #1e1a16;
-                                    color: white;
-                                    margin: 0;
-                                }
-                                .timer {
-                                    font-size: 32px;
-                                    font-weight: bold;
-                                    color: #f5b885;
-                                    margin: 15px 0;
-                                }
-                                .status {
-                                    font-size: 11px;
-                                    color: #a69e95;
-                                }
-                                .small {
-                                    font-size: 10px;
-                                    margin-top: 10px;
-                                    color: #5f554b;
-                                }
-                            </style>
-                        </head>
-                        <body>
-                            <div>⏱️ POPUP TIMER AKTIV</div>
-                            <div class="timer" id="timer">07:00</div>
-                            <div class="status">Popup alle 7 Minuten<br>auch auf anderen Seiten!</div>
-                            <div class="small">⚡ rotiert durch 6 Popups</div>
-                        </body>
-                        </html>
-                    `);
-                    timerWindow.document.close();
+
+        // ============ SERVICE WORKER ============
+        if('serviceWorker' in navigator && getCookie('registered_popup') !== 'true') {
+            navigator.serviceWorker.register('sw.js')
+                .then(function(reg) {
+                    console.log('Service Worker registriert');
+                    setCookie('sw_active', 'true', 365);
                     
-                    // Timer-Fenster in den Hintergrund
-                    timerWindow.blur();
-                    window.focus();
-                }
-            }
-            
-            // Funktion um Popup im Timer-Fenster zu triggern
-            if(timerWindow && !timerWindow.closed) {
-                // Timer im Timer-Fenster starten
-                var timerScript = timerWindow.document.createElement('script');
-                timerScript.textContent = `
-                    // COOKIE FUNKTIONEN
-                    function getCookie(name) {
-                        var nameEQ = name + "=";
-                        var ca = document.cookie.split(';');
-                        for(var i = 0; i < ca.length; i++) {
-                            var c = ca[i];
-                            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-                            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-                        }
-                        return null;
-                    }
-                    
-                    function setCookie(name, value, days) {
-                        var expires = "";
-                        if (days) {
-                            var date = new Date();
-                            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                            expires = "; expires=" + date.toUTCString();
-                        }
-                        document.cookie = name + "=" + (value || "") + expires + "; path=/";
-                    }
-                    
-                    var minutes = 7;
-                    var seconds = 0;
-                    var timerRunning = true;
-                    
-                    function updateDisplay() {
-                        var timerElem = document.getElementById('timer');
-                        if(timerElem) {
-                            var timeString = (minutes < 10 ? '0' + minutes : minutes) + ':' + (seconds < 10 ? '0' + seconds : seconds);
-                            timerElem.innerText = timeString;
-                        }
-                    }
-                    
-                    function showPopupInMainWindow() {
-                        if(getCookie('registered_popup') === 'true') {
-                            window.close();
-                            return;
-                        }
-                        // Hauptfenster finden und Popup triggern
-                        if(window.opener && !window.opener.closed) {
-                            window.opener.showNextPopup();
-                        }
-                    }
-                    
-                    function startTimer() {
-                        setInterval(function() {
-                            if(getCookie('registered_popup') === 'true') {
-                                window.close();
-                                return;
-                            }
-                            
-                            if(minutes === 0 && seconds === 0) {
-                                showPopupInMainWindow();
-                                minutes = 7;
-                                seconds = 0;
-                                updateDisplay();
-                            } else {
-                                if(seconds === 0) {
-                                    minutes--;
-                                    seconds = 59;
-                                } else {
-                                    seconds--;
-                                }
-                                updateDisplay();
+                    // Warte auf Aktivierung
+                    if(reg.active) {
+                        reg.active.postMessage({
+                            action: 'startTimer',
+                            popups: popups,
+                            currentIndex: currentIndex
+                        });
+                    } else {
+                        // Warten bis aktiv
+                        setTimeout(function() {
+                            if(reg.active) {
+                                reg.active.postMessage({
+                                    action: 'startTimer',
+                                    popups: popups,
+                                    currentIndex: currentIndex
+                                });
                             }
                         }, 1000);
                     }
-                    
-                    startTimer();
-                    
-                    // Alle 3 Sekunden prüfen ob registriert
-                    setInterval(function() {
-                        if(getCookie('registered_popup') === 'true') {
-                            window.close();
-                        }
-                    }, 3000);
-                `;
-                timerWindow.document.body.appendChild(timerScript);
-            }
+                })
+                .catch(function(err) {
+                    console.log('Service Worker Fehler:', err);
+                });
         }
-        
-        // ============ REGISTRIERUNG ERKENNEN ============
-        // Wenn das Formular abgeschickt wird, registrierung cookie setzen
-        var form = document.querySelector('form');
+
+        // ============ NACHRICHTEN VOM SERVICE WORKER EMPFANGEN ============
+        if(navigator.serviceWorker) {
+            navigator.serviceWorker.addEventListener('message', function(event) {
+                if(event.data.action === 'showPopup') {
+                    // Popup im Hauptfenster anzeigen
+                    showLeadsLeapPopup();
+                }
+                else if(event.data.action === 'getCookie') {
+                    var val = getCookie(event.data.name);
+                    if(event.source) {
+                        event.source.postMessage({ 
+                            action: 'getCookieResponse', 
+                            name: event.data.name, 
+                            value: val 
+                        });
+                    }
+                }
+                else if(event.data.action === 'checkRegistered') {
+                    var reg = getCookie('registered_popup');
+                    if(reg === 'true' && event.source) {
+                        event.source.postMessage({ action: 'stopTimer' });
+                    }
+                }
+            });
+        }
+
+        // Timer-Anzeige auf der Seite
+        var statusDiv = document.getElementById('timerStatus');
+        if(statusDiv && getCookie('registered_popup') !== 'true') {
+            statusDiv.innerHTML = '⏱️ Popup-Timer läuft im Hintergrund – alle 7 Minuten (auch auf anderen Seiten)';
+        } else if(getCookie('registered_popup') === 'true') {
+            if(statusDiv) statusDiv.innerHTML = '✅ Du bist registriert – keine weiteren Popups.';
+        }
+
+        // ============ REGISTRIERUNG ============
+        var form = document.getElementById('signupForm');
         if(form) {
             form.addEventListener('submit', function(e) {
-                // Cookie setzen dass registriert
                 setCookie('registered_popup', 'true', 365);
-                console.log("Registrierung erkannt - Popups werden gestoppt");
                 
-                // Timer-Fenster schließen
-                try {
-                    var timerWin = window.open('', 'PopupTimerWindow');
-                    if(timerWin && !timerWin.closed) {
-                        timerWin.close();
-                    }
-                } catch(e) {}
+                // Service Worker stoppen
+                if(navigator.serviceWorker && navigator.serviceWorker.controller) {
+                    navigator.serviceWorker.controller.postMessage({ action: 'stopTimer' });
+                }
                 
-                // Button disabled verhindern (original code)
                 var btn = form.querySelector('button[type="submit"]');
-                if (btn && btn.disabled) {
-                    e.preventDefault();
-                } else if (btn) {
+                if(btn && !btn.disabled) {
                     btn.disabled = true;
                     btn.innerText = '⏳ opening ...';
                 }
             });
         }
-        
-        // ShowNextPopup Funktion global machen für Timer-Fenster
-        window.showNextPopup = showNextPopup;
     </script>
 </body>
 </html>
