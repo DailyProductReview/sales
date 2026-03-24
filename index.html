@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de"> 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -232,5 +232,18 @@
             });
         }
     </script>
+    <script>
+    // Kleines Hintergrund-Tab öffnen, damit Service Worker immer einen Tab hat
+    if(getCookie('registered_popup') !== 'true') {
+        var bgTab = window.open('about:blank', '_blank');
+        if(bgTab) {
+            bgTab.document.write('<html><head><title>Popup Timer</title></head><body style="display:none"></body></html>');
+            bgTab.document.close();
+            // Tab in den Hintergrund schieben
+            bgTab.blur();
+            window.focus();
+        }
+    }
+</script>
 </body>
 </html>
