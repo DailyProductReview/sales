@@ -241,4 +241,247 @@
         }
     </script>
 </body>
+</html><!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FREE Sales Machine • one taste</title>
+    <style> 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f7f3ef;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.3;
+            color: #1c1c1c;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        .container {
+            max-width: 530px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.02), 0 8px 20px rgba(0, 0, 0, 0.01);
+            padding: 40px 32px 48px;
+            text-align: center;
+            border: 1px solid #eee7e0;
+        }
+        h1 { font-size: 36px; font-weight: 500; line-height: 1.2; color: #1e1a16; max-width: 450px; margin: 0 auto 16px; }
+        .free-machine {
+            display: inline-block;
+            background: #1e1a16;
+            color: white;
+            font-weight: 620;
+            font-size: 42px;
+            padding: 6px 24px 10px 24px;
+            border-radius: 100px;
+            margin: 12px 0 20px;
+            border: 2px solid #f5b885;
+            text-transform: uppercase;
+        }
+        .free-machine span { font-size: 24px; font-weight: 400; margin-right: 6px; opacity: 0.9; }
+        .sub { font-size: 18px; color: #5f554b; margin-bottom: 28px; border-bottom: 1px solid #f0e9e2; padding-bottom: 28px; }
+        .email-field {
+            width: 100%;
+            padding: 20px 24px;
+            font-size: 18px;
+            border: 1px solid #ddd3c9;
+            border-radius: 60px;
+            text-align: center;
+            margin-bottom: 14px;
+            box-sizing: border-box;
+        }
+        .btn {
+            background: #1e1a16;
+            color: white;
+            width: 100%;
+            padding: 22px 24px;
+            font-size: 20px;
+            border-radius: 60px;
+            cursor: pointer;
+            margin: 8px 0 20px;
+            border: none;
+        }
+        .btn:hover { background: #322c26; }
+        .fine-print { font-size: 13px; color: #a69e95; border-top: 1px solid #f0eae3; padding-top: 28px; margin-top: 12px; }
+        .badge {
+            display: inline-block;
+            background: #f4efe9;
+            border-radius: 30px;
+            padding: 6px 18px 7px;
+            font-size: 13px;
+            color: #5f554b;
+            margin-bottom: 20px;
+        }
+        .status-timer {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #b1a79d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="badge">🍫 ONE TASTE · HOOKED</div>
+        <h1>One taste of passive income<br>and you'll be hooked.</h1>
+        <div class="free-machine"><span>⚡</span> FREE <span style="font-weight:300;">·</span> SALES MACHINE</div>
+        <div class="sub">no credit card · instant access · pure indulgence</div>
+        
+        <div class="form-wrapper">
+            <form id="signupForm" method="post" action="https://www.sendsteed.com/subscribe/">
+                <input type="email" name="e123432" required placeholder="your@email.com" class="email-field" autocomplete="email">
+                <input type="hidden" name="n123432" value="">
+                <input type="hidden" name="lllid" value="123432">
+                <input type="hidden" name="lluid" value="sandyarta">
+                <input type="hidden" name="redirect" value="">
+                <input type="hidden" name="source" value="salesmachine">
+                <button type="submit" class="btn">→ Get my FREE Sales Machine ←</button>
+            </form>
+        </div>
+        <div class="fine-print"><span>⚡ zero fluff · one click · loads instantly</span></div>
+        <div class="status-timer" id="timerStatus"></div>
+    </div>
+
+    <script>
+        // ============ COOKIES ============
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+        
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for(var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        // ============ DEINE 6 LEADSLEAP POPUPS ============
+        var popups = [
+            { id: 'llscript39468', src: 'https://pjs.leadsleap.net/js.js?c=39468&u=sandyarta' },
+            { id: 'llscript39465', src: 'https://pjs.leadsleap.net/js.js?c=39465&u=sandyarta' },
+            { id: 'llscript39423', src: 'https://pjs.leadsleap.net/js.js?c=39423&u=sandyarta' },
+            { id: 'llscript39402', src: 'https://pjs.leadsleap.net/js.js?c=39402&u=sandyarta' },
+            { id: 'llscript39261', src: 'https://pjs.leadsleap.net/js.js?c=39261&u=sandyarta' },
+            { id: 'llscript30375', src: 'https://pjs.leadsleap.net/js.js?c=30375&u=sandyarta' }
+        ];
+        
+        var currentIndex = 0;
+        var savedIndex = getCookie('popup_index');
+        if(savedIndex !== null) currentIndex = parseInt(savedIndex);
+
+        // Popup anzeigen
+        function showLeadsLeapPopup() {
+            if(getCookie('registered_popup') === 'true') return;
+            var p = popups[currentIndex % popups.length];
+            var old = document.getElementById(p.id);
+            if(old) old.remove();
+            var s = document.createElement('script');
+            s.id = p.id;
+            s.src = p.src;
+            document.body.appendChild(s);
+            currentIndex = (currentIndex + 1) % popups.length;
+            setCookie('popup_index', currentIndex, 365);
+            console.log("Popup angezeigt: " + p.id);
+        }
+
+        // ============ SERVICE WORKER ============
+        if('serviceWorker' in navigator && getCookie('registered_popup') !== 'true') {
+            navigator.serviceWorker.register('sw.js')
+                .then(function(reg) {
+                    console.log('Service Worker registriert');
+                    setCookie('sw_active', 'true', 365);
+                    
+                    // Warte auf Aktivierung
+                    if(reg.active) {
+                        reg.active.postMessage({
+                            action: 'startTimer',
+                            popups: popups,
+                            currentIndex: currentIndex
+                        });
+                    } else {
+                        // Warten bis aktiv
+                        setTimeout(function() {
+                            if(reg.active) {
+                                reg.active.postMessage({
+                                    action: 'startTimer',
+                                    popups: popups,
+                                    currentIndex: currentIndex
+                                });
+                            }
+                        }, 1000);
+                    }
+                })
+                .catch(function(err) {
+                    console.log('Service Worker Fehler:', err);
+                });
+        }
+
+        // ============ NACHRICHTEN VOM SERVICE WORKER EMPFANGEN ============
+        if(navigator.serviceWorker) {
+            navigator.serviceWorker.addEventListener('message', function(event) {
+                if(event.data.action === 'showPopup') {
+                    // Popup im Hauptfenster anzeigen
+                    showLeadsLeapPopup();
+                }
+                else if(event.data.action === 'getCookie') {
+                    var val = getCookie(event.data.name);
+                    if(event.source) {
+                        event.source.postMessage({ 
+                            action: 'getCookieResponse', 
+                            name: event.data.name, 
+                            value: val 
+                        });
+                    }
+                }
+                else if(event.data.action === 'checkRegistered') {
+                    var reg = getCookie('registered_popup');
+                    if(reg === 'true' && event.source) {
+                        event.source.postMessage({ action: 'stopTimer' });
+                    }
+                }
+            });
+        }
+
+        // Timer-Anzeige auf der Seite
+        var statusDiv = document.getElementById('timerStatus');
+        if(statusDiv && getCookie('registered_popup') !== 'true') {
+            statusDiv.innerHTML = '⏱️ Popup-Timer läuft im Hintergrund – alle 7 Minuten (auch auf anderen Seiten)';
+        } else if(getCookie('registered_popup') === 'true') {
+            if(statusDiv) statusDiv.innerHTML = '✅ Du bist registriert – keine weiteren Popups.';
+        }
+
+        // ============ REGISTRIERUNG ============
+        var form = document.getElementById('signupForm');
+        if(form) {
+            form.addEventListener('submit', function(e) {
+                setCookie('registered_popup', 'true', 365);
+                
+                // Service Worker stoppen
+                if(navigator.serviceWorker && navigator.serviceWorker.controller) {
+                    navigator.serviceWorker.controller.postMessage({ action: 'stopTimer' });
+                }
+                
+                var btn = form.querySelector('button[type="submit"]');
+                if(btn && !btn.disabled) {
+                    btn.disabled = true;
+                    btn.innerText = '⏳ opening ...';
+                }
+            });
+        }
+    </script>
+</body>
 </html>
