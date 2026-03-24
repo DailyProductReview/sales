@@ -1,6 +1,6 @@
 // sw.js – läuft DAUERHAFT im Hintergrund (auch wenn Seite geschlossen)
 let timerInterval = null;
-let registered = false;
+let registered = false; 
 let popupList = [];
 let popupIndex = 0;
 let minutes = 7;
