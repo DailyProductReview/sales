@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>TESTED Buyer Traffic HUNTER | Bloody Real Verified Offers</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Creepster', 'Impact', 'Arial Black', 'Segoe UI', cursive;
+    }
+
+    body {
+      background: #0a0000;
+      background-image: radial-gradient(circle at 10% 20%, #2a0505 0%, #030000 100%);
+      color: #f0d5b0;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* BLOODY SPLATTER OVERLAY */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1200"><path fill="rgba(120,0,0,0.12)" d="M150,200 Q180,150 210,180 T260,210 Q290,190 310,210 T350,240 Q380,250 370,280 T340,340 Q320,370 290,360 T240,350 Q210,360 190,340 T150,280 Q130,260 140,230 Z M500,500 Q530,470 560,500 T620,540 Q650,560 640,590 T590,650 Q560,680 520,660 T460,620 Q440,600 450,570 Z M80,800 Q110,770 140,800 T200,840 Q230,860 220,890 T190,940 Q170,960 140,940 T90,910 Q70,890 80,860 Z M650,900 Q680,870 710,900 T770,940 Q800,960 790,990 T760,1040 Q740,1060 710,1040 T660,1010 Q640,990 650,960 Z"/></svg>') repeat;
+      opacity: 0.3;
+      z-index: 1;
+    }
+
+    /* DARK RED GRUNGE */
+    .lightning-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+      background: repeating-linear-gradient(45deg, rgba(180, 0, 0, 0.08) 0px, rgba(180, 0, 0, 0.08) 3px, transparent 3px, transparent 12px);
+      animation: bloodPulse 0.5s infinite alternate;
+    }
+
+    @keyframes bloodPulse {
+      0% { opacity: 0.2; background-color: rgba(100, 0, 0, 0.05); }
+      100% { opacity: 0.5; background-color: rgba(200, 30, 0, 0.15); }
+    }
+
+    /* BLOODY LIGHTNING BOLTS */
+    .bolt {
+      position: fixed;
+      top: 0;
+      left: 15%;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(to bottom, #ff3300, #8b0000, transparent);
+      filter: blur(3px);
+      opacity: 0;
+      animation: bloodyStrike 3.5s infinite;
+      pointer-events: none;
+      z-index: 3;
+    }
+    .bolt2 { left: 65%; animation-delay: 1s; width: 7px; background: linear-gradient(to bottom, #ff5500, #aa0000, transparent);}
+    .bolt3 { left: 40%; animation-delay: 2.2s; height: 70%; background: linear-gradient(to bottom, #ff2200, #5a0000, transparent);}
+    @keyframes bloodyStrike {
+      0% { opacity: 0; transform: scaleY(0);}
+      6% { opacity: 1; transform: scaleY(1); background: #ff4411; box-shadow: 0 0 25px #ff0000;}
+      12% { opacity: 0; transform: scaleY(0.3);}
+      100% { opacity: 0;}
+    }
+
+    .container {
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* BLOODY HORROR TITLE - RED with WHITE SHADOW */
+    .hero {
+      text-align: center;
+      margin: 0.5rem 0 1rem;
+      border-bottom: 5px solid #b00;
+      border-top: 3px solid #a00;
+      background: rgba(0,0,0,0.5);
+      border-radius: 60px;
+      padding: 0.5rem;
+    }
+
+    h1 {
+      font-size: 5rem;
+      font-family: 'Creepster', 'Impact', cursive;
+      letter-spacing: 6px;
+      /* RED TEXT with WHITE SHADOW */
+      color: #ff3300;
+      background: none;
+      -webkit-background-clip: unset;
+      background-clip: unset;
+      text-shadow: 0 0 20px rgba(255,255,255,0.9), 0 0 12px white, 0 0 5px #ffffff, 3px 3px 0px #4a0000;
+      word-break: break-word;
+      filter: drop-shadow(0 0 8px rgba(255,200,100,0.8));
+    }
+
+    .tested-claim {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin: 0.5rem 0;
+      background: #1a0000cc;
+      backdrop-filter: blur(6px);
+      display: inline-block;
+      padding: 0.3rem 2rem;
+      border-radius: 60px;
+      border-left: 8px solid #ff2200;
+      border-right: 8px solid #990000;
+      text-transform: uppercase;
+      font-family: 'Impact', sans-serif;
+      color: #ffaa66;
+      text-shadow: 0 0 12px white, 0 0 5px rgba(255,255,200,0.8);
+    }
+    .tested-claim span {
+      color: #ff6644;
+      font-size: 2rem;
+      text-shadow: 0 0 10px white, 0 0 4px #ffaa77;
+    }
+
+    .sub {
+      font-size: 1.3rem;
+      background: #2a0000aa;
+      padding: 8px 20px;
+      border-radius: 40px;
+      width: fit-content;
+      margin: 0 auto;
+      font-family: 'Segoe UI', sans-serif;
+      border: 1px solid #b33;
+      text-shadow: 0 0 6px white, 0 0 3px #ffccaa;
+    }
+
+    /* CAROUSEL BANNER - BLOODY STYLE */
+    .carousel-banner {
+      background: #0a0000dd;
+      backdrop-filter: blur(10px);
+      border-radius: 60px;
+      padding: 1rem 0;
+      margin: 2rem 0;
+      border: 2px solid #cc3300;
+      box-shadow: 0 0 28px rgba(200, 0, 0, 0.6);
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .carousel-track {
+      display: inline-block;
+      white-space: nowrap;
+      animation: scrollBlood 45s linear infinite;
+    }
+    .carousel-item {
+      display: inline-block;
+      margin: 0 18px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+      vertical-align: middle;
+    }
+    .carousel-item:hover { transform: scale(1.08); filter: drop-shadow(0 0 12px #ff3300);}
+    .carousel-item img {
+      height: 140px;
+      width: auto;
+      max-width: 220px;
+      object-fit: contain;
+      border-radius: 20px;
+      border: 3px solid #aa2222;
+      background: #1f0f0f;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+    }
+    .carousel-caption {
+      font-weight: bold;
+      background: #8b0000cc;
+      margin-top: 6px;
+      border-radius: 40px;
+      padding: 3px 12px;
+      font-size: 0.7rem;
+      color: #ffccaa;
+      text-shadow: 0 0 4px white;
+    }
+    @keyframes scrollBlood {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-42%); }
+    }
+
+    .click-prompt {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+      background: #2f0000aa;
+      padding: 12px;
+      border-radius: 50px;
+      margin: 10px 0 30px;
+      border: 2px dashed #ff4411;
+      color: #ff8866;
+      text-shadow: 0 0 12px white, 0 0 5px #ffaa88;
+      letter-spacing: 2px;
+    }
+
+    /* PRODUCT GRID - double sized images */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 2.2rem;
+      margin: 2.5rem 0 4rem;
+    }
+    .product-card {
+      background: linear-gradient(145deg, #1f0808, #0a0101);
+      border-radius: 42px;
+      padding: 1.5rem 1.2rem 1.8rem;
+      text-align: center;
+      transition: 0.25s;
+      border: 1px solid #aa3333;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.8);
+    }
+    .product-card:hover {
+      transform: translateY(-10px);
+      border-color: #ff4422;
+      box-shadow: 0 0 26px #ff3300aa;
+    }
+    /* IMAGE DOUBLE SIZE */
+    .product-img-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #130202;
+      border-radius: 32px;
+      padding: 16px;
+      min-height: 320px;
+    }
+    .product-img {
+      max-width: 95%;
+      width: auto;
+      height: auto;
+      max-height: 290px;
+      object-fit: contain;
+      border-radius: 24px;
+      box-shadow: 0 8px 20px black;
+      transition: 0.2s;
+      border: 2px solid #b44;
+    }
+    /* SHIMMER BUTTON */
+    .shimmer-btn {
+      display: inline-block;
+      margin-top: 24px;
+      background: linear-gradient(120deg, #ff2200, #7a0000);
+      color: #fff0c0;
+      font-weight: bold;
+      font-size: 1.6rem;
+      padding: 14px 28px;
+      border-radius: 60px;
+      text-decoration: none;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 0 12px #ff3300, 0 4px 12px black;
+      position: relative;
+      overflow: hidden;
+      width: 85%;
+      font-family: 'Impact', sans-serif;
+      text-shadow: 0 0 6px white, 0 0 3px #ffccaa;
+    }
+    .shimmer-btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(115deg, rgba(255,255,200,0) 10%, rgba(255,80,40,0.6) 50%, rgba(255,255,200,0) 90%);
+      transform: rotate(25deg);
+      animation: bloodyShimmer 2s infinite;
+    }
+    @keyframes bloodyShimmer {
+      0% { transform: translateX(-100%) rotate(25deg);}
+      100% { transform: translateX(100%) rotate(25deg);}
+    }
+    .shimmer-btn:hover {
+      background: linear-gradient(120deg, #ff5533, #9a0000);
+      transform: scale(1.03);
+      box-shadow: 0 0 22px #ff6644;
+    }
+
+    /* POPUP MODAL */
+    .popup-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.96);
+      backdrop-filter: blur(14px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.3s;
+    }
+    .popup-active {
+      visibility: visible;
+      opacity: 1;
+    }
+    .popup-content {
+      background: radial-gradient(circle at 30% 10%, #2a0505, #010000);
+      max-width: 520px;
+      width: 90%;
+      border-radius: 56px;
+      padding: 2rem;
+      text-align: center;
+      border: 3px solid #ff4422;
+      box-shadow: 0 0 50px #ff2200aa;
+      position: relative;
+      animation: popGlow 0.4s ease;
+    }
+    @keyframes popGlow {
+      0% { transform: scale(0.9); opacity: 0; box-shadow: 0 0 0px red;}
+      100% { transform: scale(1); opacity: 1; box-shadow: 0 0 40px #ff2200;}
+    }
+    .popup-content h2 {
+      font-size: 2.3rem;
+      color: #ff6644;
+      font-family: 'Creepster', cursive;
+      text-shadow: 0 0 12px white, 0 0 6px #ffaa66;
+    }
+    .manipulative-text {
+      background: #6a0000dd;
+      padding: 14px;
+      border-radius: 40px;
+      font-weight: bold;
+      font-size: 1.3rem;
+      margin: 15px 0;
+      animation: pulseRed 0.9s infinite;
+      color: #ffbb99;
+      text-shadow: 0 0 6px white;
+    }
+    @keyframes pulseRed {
+      0% { background: #9a0000cc; box-shadow: 0 0 0 0 #ff5533; }
+      100% { background: #c50000cc; box-shadow: 0 0 0 10px rgba(200,0,0,0);}
+    }
+    .popup-form input {
+      width: 100%;
+      padding: 15px;
+      border-radius: 60px;
+      border: none;
+      font-size: 1.1rem;
+      background: #2a0a0a;
+      color: #ffddbb;
+      text-align: center;
+    }
+    .popup-form button {
+      background: linear-gradient(90deg, #d22, #800);
+      border: none;
+      padding: 14px;
+      width: 100%;
+      border-radius: 60px;
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: white;
+      cursor: pointer;
+      margin-top: 12px;
+      text-shadow: 0 0 6px white;
+    }
+    .close-popup {
+      position: absolute;
+      top: 20px;
+      right: 28px;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #ff8866;
+    }
+    footer {
+      text-align: center;
+      padding: 1.8rem;
+      font-size: 0.8rem;
+      border-top: 2px solid #a22;
+      color: #b77;
+      text-shadow: 0 0 4px rgba(255,255,200,0.5);
+    }
+    @media (max-width: 800px) {
+      h1 { font-size: 2.6rem; }
+      .product-grid { grid-template-columns: 1fr; gap: 1.8rem; }
+      .shimmer-btn { font-size: 1.2rem; width: 100%;}
+      .click-prompt { font-size: 1.2rem; }
+      .product-img-wrapper { min-height: 250px; }
+      .product-img { max-height: 240px; }
+      .tested-claim { font-size: 1.3rem; }
+      .tested-claim span { font-size: 1.5rem; }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="lightning-overlay"></div>
+<div class="bolt"></div><div class="bolt bolt2"></div><div class="bolt bolt3"></div>
+
+<div class="container">
+  <div class="hero">
+    <h1>🔥 TESTED Buyer Traffic HUNTER 🔥</h1>
+    <div class="tested-claim">
+      <span>I TEST EVERY PRODUCT — ALL ARE VERIFIED!</span>
+    </div>
+    <div class="sub">🧛 Only working offers • Real traffic results • No fluff 🩸</div>
+  </div>
+
+  <div class="carousel-banner"><div class="carousel-track" id="carouselTrack"></div></div>
+  <div class="click-prompt">🩸 CLICK THE BLOODY IMAGE → GET THE OFFER 🩸</div>
+
+  <div class="product-grid" id="productGrid"></div>
+  <footer>© TESTED Buyer Traffic HUNTER • Real human testing • Affiliate offers inside.</footer>
+</div>
+
+<div id="popupModal" class="popup-modal">
+  <div class="popup-content">
+    <span class="close-popup" id="closePopupBtn">&times;</span>
+    <h2>⚠️ BLOOD BONUS INSIDE ⚠️</h2>
+    <p><strong>🔥 EXCLUSIVE TRAFFIC UPDATES + SECRET REVIEWS 🔥</strong></p>
+    <div class="manipulative-text">
+      🩸 ONLY 13 VAMPIRE SPOTS LEFT! 🩸<br>
+      DON'T MISS THE NEXT LAUNCH — JOIN THE HORDE!
+    </div>
+    <form method="post" action="https://www.sendsteed.com/subscribe/" class="popup-form">
+      <input type="email" name="e123432" required placeholder="your@email.com (or bleed out)">
+      <input type="hidden" name="lllid" value="123432">
+      <input type="hidden" name="lluid" value="sandyarta">
+      <input type="hidden" name="redirect" value="">
+      <input type="hidden" name="source" id="popupSource" value="popupwpallthe offers workds">
+      <button type="submit">👉 GET SECRET BLOOD ACCESS 👈</button>
+    </form>
+    <div class="small-note" style="font-size:0.7rem; margin-top:12px;">Unsubscribe anytime. Blood pact optional.</div>
+  </div>
+</div>
+
+<script>
+  // Product data: images + affiliate links
+  const productItems = [
+    { img: "https://warriorplus.com/assets/user/listing_image/o-89694-prod_image.gif?v=1769848213", link: "https://warriorplus.com/o2/a/nv17rw1/0" },
+    { img: "https://painlesstraffic.com/wp-content/uploads/2026/02/878fdd7a-ff47-4d97-9267-0b62031fdcd1.png", link: "https://painlesstraffic.com/?ref=ebb32f07ef445d7780c0cec7b0e0df74" },
+    { img: "https://images.clickfunnels.com/ba/992150943c4f7995d198e1e8bebc9a/ChatGPT-Image-Mar-8-2026-08_01_01-PM-1-.png", link: "https://warriorplus.com/o2/a/ml0gj3t/0" },
+    { img: "https://warriorplus.com/assets/user/listing_image/o-89383-prod_image.png?v=1768647207", link: "https://warriorplus.com/o2/a/vgk39f7/0" },
+    { img: "https://warriorplus.com/assets/user/listing_image/o-89088-prod_image.png?v=1767459078", link: "https://warriorplus.com/o2/a/nncnfb6/0" },
+    { img: "https://warriorplus.com/assets/user/listing_image/o-88851-prod_image.png?v=1766161402", link: "https://warriorplus.com/o2/a/w4dxr6f/0" },
+    { img: "https://warriorplus.com/assets/user/listing_image/o-88244-prod_image.png?v=1764533911", link: "https://warriorplus.com/o2/a/jxwxp06/0" },
+    { img: "https://warriorplus.com/assets/user/listing_image/o-88014-prod_image.png?v=1762903065", link: "https://warriorplus.com/o2/a/b7crdc4/0" },
+    { img: "https://warriorplus.com/assets/user/listing_image/o-87806-prod_image.png?v=1761912188", link: "https://warriorplus.com/o2/a/mtbk6nn/0" },
+    { img: "https://warriorplus.com/assets/user/listing_image/o-87404-prod_image.jpg?v=1760123916", link: "https://warriorplus.com/o2/a/r2tg9hb/0" },
+    { img: "https://warriorplus.com/assets/user/listing_image/o-87070-prod_image.png?v=1758646749", link: "https://warriorplus.com/o2/a/qv9qsth/0" },
+    { img: "https://warriorplus.com/assets/user/listing_image/o-85980-prod_image.png?v=1754598790", link: "https://warriorplus.com/o2/a/t07t15q/0" },
+    { img: "https://warriorplus.com/assets/user/listing_image/o-86298-prod_image.png?v=1755806921", link: "https://warriorplus.com/o2/a/wnkj5y3/0" },
+    { img: "https://warriorplus.com/assets/user/listing_image/o-86344-prod_image.png?v=1755864991", link: "https://warriorplus.com/o2/a/g5ghlyx/0" },
+    { img: "https://warriorplus.com/assets/user/listing_image/o-85143-prod_image.jpg?v=1751676226", link: "https://warriorplus.com/o2/a/fy1dfpf/0" },
+    { img: "https://warriorplus.com/assets/user/listing_image/o-85274-prod_image.png?v=1752179623", link: "https://warriorplus.com/o2/a/b1rdhqt/0" },
+    { img: "https://warriorplus.com/assets/user/listing_image/o-84799-prod_image.png?v=1751463250", link: "https://warriorplus.com/o2/a/mc0qk6w/0" },
+    { img: "https://warriorplus.com/assets/user/listing_image/o-84385-prod_image.png?v=1752800593", link: "https://warriorplus.com/o2/a/c3jlkq9/0" },
+    { img: "https://warriorplus.com/assets/user/listing_image/o-84669-prod_image.png?v=1750256280", link: "https://warriorplus.com/o2/a/ht8hcvn/0" },
+    { img: "https://warriorplus.com/assets/user/listing_image/o-78831-prod_image.jpg?v=1727220052", link: "https://warriorplus.com/o2/a/k4j51n4/0" },
+    { img: "https://warriorplus.com/assets/user/listing_image/o-78388-prod_image.png?v=1725353806", link: "https://warriorplus.com/o2/a/ypqm582/0" },
+    { img: "https://warriorplus.com/assets/user/listing_image/o-78189-prod_image.jpg?v=1724439428", link: "https://warriorplus.com/o2/a/t0p24c9/0" },
+    { img: "https://warriorplus.com/assets/user/listing_image/o-74650-prod_image.png?v=1709211792", link: "https://warriorplus.com/o2/a/npfyn0h/0" },
+    { img: "https://warriorplus.com/assets/user/listing_image/o-66252-prod_image.jpg?v=1676072132", link: "https://warriorplus.com/o2/a/y3tgt5/0" },
+    { img: "https://warriorplus.com/assets/user/listing_image/o-66062-prod_image.png?v=1674712861", link: "https://warriorplus.com/o2/a/spkjwg/0" },
+    { img: "https://warriorplus.com/assets/user/listing_image/o-61800-prod_image.png?v=1655161461", link: "https://warriorplus.com/o2/a/j3m5j0/0" },
+    { img: "https://warriorplus.com/assets/user/listing_image/o-60945-prod_image.png?v=1652240736", link: "https://warriorplus.com/o2/a/b30zsh/0" },
+    { img: "https://warriorplus.com/assets/user/listing_image/o-58793-prod_image.png?v=1643135198", link: "https://warriorplus.com/o2/a/vggwrz/0" },
+    { img: "https://warriorplus.com/assets/user/listing_image/o-53481-prod_image.jpg?v=1624632584", link: "https://warriorplus.com/o2/a/b76xgt/0" }
+  ];
+
+  function getFullLink(link) {
+    let clean = link.trim();
+    if (clean.includes("painlesstraffic.com")) return clean;
+    if (clean.includes("warriorplus.com")) {
+      if (!clean.endsWith('/0')) return clean + "/allprodwarrior";
+      return clean + "/allprodwarrior";
+    }
+    return clean;
+  }
+
+  const grid = document.getElementById('productGrid');
+  const carousel = document.getElementById('carouselTrack');
+
+  function buildAll() {
+    grid.innerHTML = '';
+    carousel.innerHTML = '';
+    productItems.forEach(item => {
+      const finalUrl = getFullLink(item.link);
+      // card
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      const wrapper = document.createElement('div');
+      wrapper.className = 'product-img-wrapper';
+      const img = document.createElement('img');
+      img.src = item.img;
+      img.className = 'product-img';
+      img.alt = "tested product";
+      img.loading = 'lazy';
+      img.onerror = () => { img.src = 'https://placehold.co/500x350?text=BLOODY+OFFER'; };
+      wrapper.appendChild(img);
+      const btn = document.createElement('a');
+      btn.href = finalUrl;
+      btn.target = '_blank';
+      btn.rel = 'nofollow sponsored';
+      btn.className = 'shimmer-btn';
+      btn.textContent = '🩸 GRAB BLOODY OFFER 🩸';
+      card.appendChild(wrapper);
+      card.appendChild(btn);
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', () => window.open(finalUrl, '_blank'));
+      grid.appendChild(card);
+
+      // carousel
+      const carItem = document.createElement('div');
+      carItem.className = 'carousel-item';
+      const carImg = document.createElement('img');
+      carImg.src = item.img;
+      carImg.style.height = "140px";
+      carImg.style.width = "auto";
+      carImg.style.maxWidth = "220px";
+      carImg.style.objectFit = "contain";
+      const cap = document.createElement('div');
+      cap.className = 'carousel-caption';
+      cap.textContent = '🩸 CLICK & CONVERT 🩸';
+      carItem.appendChild(carImg);
+      carItem.appendChild(cap);
+      carItem.addEventListener('click', () => window.open(finalUrl, '_blank'));
+      carousel.appendChild(carItem);
+    });
+    // clones for infinite scroll
+    const clones = productItems.map(item => {
+      const cloneDiv = document.createElement('div');
+      cloneDiv.className = 'carousel-item';
+      const cImg = document.createElement('img');
+      cImg.src = item.img;
+      cImg.style.height = "140px";
+      cImg.style.width = "auto";
+      cImg.style.maxWidth = "220px";
+      const caption = document.createElement('div');
+      caption.className = 'carousel-caption';
+      caption.textContent = '🩸 BLOODY DEAL 🩸';
+      cloneDiv.appendChild(cImg);
+      cloneDiv.appendChild(caption);
+      cloneDiv.addEventListener('click', () => window.open(getFullLink(item.link), '_blank'));
+      return cloneDiv;
+    });
+    clones.forEach(cl => carousel.appendChild(cl));
+  }
+
+  buildAll();
+
+  // POPUP logic
+  let popupShown = false;
+  const modal = document.getElementById('popupModal');
+  const closeBtn = document.getElementById('closePopupBtn');
+  function showPopup() { if(!popupShown){ modal.classList.add('popup-active'); popupShown = true; } }
+  setTimeout(showPopup, 1500);
+  closeBtn.addEventListener('click', () => modal.classList.remove('popup-active'));
+  modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('popup-active'); });
+  const sourceField = document.getElementById('popupSource');
+  if(sourceField) sourceField.value = "popupwpallthe offers workds";
+  window.addEventListener('scroll', () => { if(!popupShown && window.scrollY > 500) showPopup(); });
+
+  function restartCarousel() {
+    const track = document.getElementById('carouselTrack');
+    if(track) { track.style.animation = 'none'; track.offsetHeight; track.style.animation = 'scrollBlood 45s linear infinite'; }
+  }
+  window.addEventListener('load', restartCarousel);
+  setTimeout(restartCarousel, 1000);
+</script>
+</body>
+</html>
