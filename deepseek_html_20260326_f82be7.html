@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>💰 MoneyMinds Quiz | Unlock Your Online Income Path</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #0a0f1e 0%, #0c1222 100%);
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #eef4ff;
+            line-height: 1.4;
+            padding: 1.5rem;
+            min-height: 100vh;
+        }
+
+        /* main funnel container */
+        .funnel-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(18, 25, 45, 0.65);
+            backdrop-filter: blur(2px);
+            border-radius: 3rem;
+            padding: 1.8rem 2rem 2.5rem;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,215,0,0.2);
+            transition: all 0.2s ease;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFE6A3, #FFC857, #FFB347);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .subhead {
+            font-size: 1.1rem;
+            color: #b9c8ff;
+            border-left: 3px solid #F5B042;
+            padding-left: 1rem;
+            margin: 0.75rem 0 1.8rem 0;
+            font-weight: 500;
+        }
+
+        /* progress bar */
+        .quiz-progress {
+            background: #1e2a3e;
+            border-radius: 40px;
+            height: 8px;
+            width: 100%;
+            margin: 1rem 0 2rem 0;
+        }
+        .progress-fill {
+            background: linear-gradient(90deg, #F5B042, #FFD966);
+            width: 0%;
+            height: 8px;
+            border-radius: 40px;
+            transition: width 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        /* quiz card style */
+        .quiz-card {
+            background: rgba(10, 18, 30, 0.8);
+            backdrop-filter: blur(4px);
+            border-radius: 2rem;
+            padding: 1.6rem 1.8rem;
+            margin-bottom: 1.8rem;
+            border: 1px solid rgba(255, 200, 100, 0.3);
+            box-shadow: 0 12px 25px -12px rgba(0,0,0,0.5);
+        }
+
+        .question-text {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.6rem;
+            line-height: 1.3;
+        }
+
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .quiz-option {
+            background: #0f172f;
+            border-radius: 60px;
+            padding: 1rem 1.8rem;
+            font-weight: 600;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid #2d3a5e;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .quiz-option:hover {
+            background: #1f2a48;
+            border-color: #F5B042;
+            transform: translateX(6px);
+        }
+        .quiz-option.selected {
+            background: #F5B042;
+            color: #0a0f1e;
+            border-color: #FFE5A3;
+            box-shadow: 0 6px 14px rgba(245,176,66,0.3);
+        }
+        .option-icon {
+            font-size: 1.6rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem 0 1rem 0;
+            gap: 1rem;
+        }
+        button {
+            background: #2a3a58;
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: white;
+            font-family: inherit;
+        }
+        button.next-btn, .submit-final {
+            background: linear-gradient(95deg, #F5B042, #E69500);
+            color: #0a0f1e;
+            box-shadow: 0 4px 12px rgba(245,176,66,0.3);
+        }
+        button.next-btn:hover, .submit-final:hover {
+            background: linear-gradient(95deg, #FFC55A, #F5A623);
+            transform: scale(0.97);
+            box-shadow: 0 8px 20px rgba(245,176,66,0.5);
+        }
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* email capture block (embedded inside funnel) */
+        .email-capture {
+            background: linear-gradient(125deg, #0E1628, #081020);
+            border-radius: 2rem;
+            padding: 1.8rem;
+            margin-top: 1rem;
+            border: 1px solid #ffcd7e55;
+            text-align: center;
+        }
+        .email-capture h3 {
+            font-size: 1.7rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        .email-capture p {
+            margin-bottom: 1.5rem;
+            color: #cddcff;
+        }
+        .email-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .email-form input {
+            background: #fff;
+            border: none;
+            padding: 1rem 1.2rem;
+            border-radius: 80px;
+            font-size: 1rem;
+            font-family: inherit;
+            color: #111;
+            outline: none;
+            width: 100%;
+        }
+        .email-form button {
+            background: linear-gradient(95deg, #F5B042, #E69500);
+            border: none;
+            font-weight: 800;
+            font-size: 1.2rem;
+            padding: 1rem;
+            color: #0a0f1e;
+            width: 100%;
+        }
+        .email-form button:hover {
+            background: #FFC857;
+            transform: scale(0.98);
+        }
+        .fine-print {
+            font-size: 0.75rem;
+            margin-top: 1rem;
+            opacity: 0.7;
+        }
+
+        .result-message {
+            background: #1e2a2f;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.7rem;
+            margin-top: 2rem;
+            opacity: 0.6;
+        }
+
+        @media (max-width: 550px) {
+            .funnel-container {
+                padding: 1.2rem;
+            }
+            .question-text {
+                font-size: 1.45rem;
+            }
+            .quiz-option {
+                padding: 0.8rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="funnel-container" id="funnelRoot">
+    <h1>💰 The 5‑Figure Flow Quiz</h1>
+    <div class="subhead">Answer 4 quick questions → unlock your personalized online money blueprint (no fluff, just real opportunities)</div>
+    
+    <!-- progress indicator -->
+    <div class="quiz-progress">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <!-- Dynamic Quiz Area -->
+    <div id="quizArea"></div>
+
+    <!-- Hidden final area will be injected after quiz completion -->
+</div>
+
+<footer>
+    🔥 100% free insights · No spam · Unlock your next income stream
+</footer>
+
+<script>
+    // -------- QUIZ QUESTIONS (interesting & curiosity-driven, money online niche) --------
+    const questions = [
+        {
+            text: "⚡ If you could wake up with an extra $500/month tomorrow, what skill would you secretly enjoy using?",
+            options: [
+                { text: "🎬 Creating short videos & going viral", value: "creator" },
+                { text: "📊 Flipping products / e‑com", value: "ecom" },
+                { text: "✍️ Writing & AI automation", value: "freelance" },
+                { text: "💸 Crypto / digital assets", value: "crypto" }
+            ]
+        },
+        {
+            text: "🧠 What's your biggest struggle when trying to make money online?",
+            options: [
+                { text: "😵 Information overload — don't know where to start", value: "overwhelm" },
+                { text: "⏳ Too little time, need passive systems", value: "time" },
+                { text: "💰 No starting budget, need free methods", value: "budget" },
+                { text: "📉 Tried things before, but no consistency", value: "consistency" }
+            ]
+        },
+        {
+            text: "🚀 Which lifestyle resonates with your 'dream income'?",
+            options: [
+                { text: "🌴 Location independent – working from Bali", value: "nomad" },
+                { text: "🏡 Side hustle that beats my 9-5", value: "sidehustle" },
+                { text: "👑 Building a brand & authority", value: "brand" },
+                { text: "⚙️ Automated funnels & digital products", value: "automation" }
+            ]
+        },
+        {
+            text: "🔮 What's your gut feeling about the next big money trend?",
+            options: [
+                { text: "🤖 AI-powered business tools", value: "ai" },
+                { text: "📱 UGC & influencer marketing", value: "ugc" },
+                { text: "🛒 High-ticket dropshipping", value: "dropship" },
+                { text: "📚 Digital courses & coaching", value: "courses" }
+            ]
+        }
+    ];
+
+    let currentQuestionIndex = 0;
+    let userAnswers = [];   // store {qIndex, selectedValue, selectedText}
+    let quizCompleted = false;   // flag to show email capture after quiz end
+
+    // DOM elements
+    const quizArea = document.getElementById('quizArea');
+    const progressFill = document.getElementById('progressFill');
+
+    // Helper: update progress bar width
+    function updateProgress() {
+        let percent = 0;
+        if (!quizCompleted) {
+            percent = (currentQuestionIndex / questions.length) * 100;
+        } else {
+            percent = 100;
+        }
+        progressFill.style.width = `${percent}%`;
+    }
+
+    // Render current question
+    function renderQuestion() {
+        if (quizCompleted) {
+            renderEmailCaptureScreen();
+            return;
+        }
+        if (currentQuestionIndex >= questions.length) {
+            // All questions answered -> complete quiz and show email gate
+            completeQuizAndShowEmail();
+            return;
+        }
+
+        const q = questions[currentQuestionIndex];
+        const currentAnswerObj = userAnswers.find(a => a.qIndex === currentQuestionIndex);
+        const selectedVal = currentAnswerObj ? currentAnswerObj.selectedValue : null;
+
+        let optionsHtml = '';
+        q.options.forEach(opt => {
+            const isSelected = (selectedVal === opt.value);
+            const selectedClass = isSelected ? 'selected' : '';
+            optionsHtml += `
+                <div class="quiz-option ${selectedClass}" data-value="${opt.value}" data-text="${escapeHtml(opt.text)}">
+                    <span class="option-icon">${opt.text.slice(0,2)}</span>
+                    <span>${escapeHtml(opt.text)}</span>
+                </div>
+            `;
+        });
+
+        const html = `
+            <div class="quiz-card">
+                <div class="question-text">${escapeHtml(q.text)}</div>
+                <div class="options-grid" id="optionsGrid">
+                    ${optionsHtml}
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button id="prevBtn" ${currentQuestionIndex === 0 ? 'disabled' : ''}>◀ Back</button>
+                <button id="nextBtn" class="next-btn">${currentQuestionIndex === questions.length-1 ? '✨ Reveal my path →' : 'Next →'}</button>
+            </div>
+        `;
+
+        quizArea.innerHTML = html;
+
+        // attach option click handlers
+        const optionDivs = document.querySelectorAll('.quiz-option');
+        optionDivs.forEach(optDiv => {
+            optDiv.addEventListener('click', (e) => {
+                // prevent bubbling
+                const value = optDiv.getAttribute('data-value');
+                const text = optDiv.getAttribute('data-text');
+                // update stored answer for current question
+                const existingIdx = userAnswers.findIndex(a => a.qIndex === currentQuestionIndex);
+                if (existingIdx !== -1) {
+                    userAnswers[existingIdx] = { qIndex: currentQuestionIndex, selectedValue: value, selectedText: text };
+                } else {
+                    userAnswers.push({ qIndex: currentQuestionIndex, selectedValue: value, selectedText: text });
+                }
+                // re-render same question to update selected style
+                renderQuestion();
+            });
+        });
+
+        // prev/next logic
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                if (currentQuestionIndex > 0) {
+                    currentQuestionIndex--;
+                    renderQuestion();
+                    updateProgress();
+                }
+            });
+        }
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                // check if current question has answer
+                const hasAnswer = userAnswers.some(a => a.qIndex === currentQuestionIndex);
+                if (!hasAnswer) {
+                    // subtle alert - encourage to pick option
+                    const toast = document.createElement('div');
+                    toast.innerText = "👉 Pick one option to continue – your personalized insight awaits!";
+                    toast.style.position = "fixed";
+                    toast.style.bottom = "20px";
+                    toast.style.left = "50%";
+                    toast.style.transform = "translateX(-50%)";
+                    toast.style.backgroundColor = "#F5B042";
+                    toast.style.color = "#0a0f1e";
+                    toast.style.padding = "12px 24px";
+                    toast.style.borderRadius = "40px";
+                    toast.style.fontWeight = "bold";
+                    toast.style.zIndex = "999";
+                    toast.style.boxShadow = "0 5px 15px black";
+                    document.body.appendChild(toast);
+                    setTimeout(() => toast.remove(), 2500);
+                    return;
+                }
+                if (currentQuestionIndex + 1 < questions.length) {
+                    currentQuestionIndex++;
+                    renderQuestion();
+                    updateProgress();
+                } else if (currentQuestionIndex + 1 === questions.length) {
+                    // last question and clicked next -> complete quiz
+                    completeQuizAndShowEmail();
+                }
+            });
+        }
+        updateProgress();
+    }
+
+    // Function called after all questions answered OR after user finishes quiz
+    function completeQuizAndShowEmail() {
+        if (quizCompleted) return;
+        // ensure all questions have answers (just in case)
+        for (let i = 0; i < questions.length; i++) {
+            if (!userAnswers.find(a => a.qIndex === i)) {
+                // fallback: assign a dummy answer from first option to avoid incomplete state
+                const fallbackOption = questions[i].options[0];
+                userAnswers.push({ qIndex: i, selectedValue: fallbackOption.value, selectedText: fallbackOption.text });
+            }
+        }
+        quizCompleted = true;
+        updateProgress();
+        renderEmailCaptureScreen();
+    }
+
+    // Build a personalized teaser message based on answers (makes people eager to submit email)
+    function generateCuriosityMessage() {
+        // map answers to interesting insight
+        const getAnswerByIndex = (idx) => {
+            const ans = userAnswers.find(a => a.qIndex === idx);
+            return ans ? ans.selectedValue : 'smart';
+        };
+        const skill = getAnswerByIndex(0);
+        const struggle = getAnswerByIndex(1);
+        const lifestyle = getAnswerByIndex(2);
+        const trend = getAnswerByIndex(3);
+        
+        let message = "";
+        if (skill === "creator") message = "viral video monetization & brand deals";
+        else if (skill === "ecom") message = "automated dropshipping + product flipping";
+        else if (skill === "freelance") message = "high-ticket AI writing & freelancing";
+        else message = "crypto staking & digital asset plays";
+        
+        let struggleTip = "";
+        if (struggle === "overwhelm") struggleTip = "step-by-step roadmap that cuts the noise";
+        else if (struggle === "time") struggleTip = "passive systems that earn while you sleep";
+        else if (struggle === "budget") struggleTip = "zero-cost methods to start under $20";
+        else struggleTip = "consistency hacks used by 6-figure earners";
+        
+        let lifestyleMatch = "";
+        if (lifestyle === "nomad") lifestyleMatch = "location-independent freedom model";
+        else if (lifestyle === "sidehustle") lifestyleMatch = "extra $2k/month blueprint";
+        else if (lifestyle === "brand") lifestyleMatch = "personal brand authority matrix";
+        else lifestyleMatch = "fully automated digital asset funnel";
+        
+        let trendBonus = "";
+        if (trend === "ai") trendBonus = "AI tools that 10x your output";
+        else if (trend === "ugc") trendBonus = "UGC secret ad arbitrage";
+        else if (trend === "dropship") trendBonus = "high-ticket dropshipping niches";
+        else trendBonus = "course creation & coaching launch secrets";
+        
+        return `🔓 Based on your answers (${message} + ${struggleTip}), we built a CUSTOM micro-strategy: "${lifestyleMatch}" paired with "${trendBonus}". Enter your email to get the full step-by-step PDF + exclusive video — completely free.`;
+    }
+
+    // Render the final email capture screen with curiosity-driven copy & the provided form
+    function renderEmailCaptureScreen() {
+        const curiosityMsg = generateCuriosityMessage();
+        // custom hidden redirect etc but we keep source = quizneu
+        // Use provided form structure but add extra attributes and source hidden field value = "quizneu"
+        // Also we need to keep original action, but we'll rebuild the form exactly as requested with dynamic redirect maybe empty, but we set source=quizneu
+        // Additionally we embed a nice custom wrapper and keep all original inputs.
+        // But also we add an extra hidden to ensure lllid and lluid are preserved.
+        // To avoid conflicts, we'll recreate the same exact form but also include the same fields, plus additional styling.
+        // Also we can prefill redirect optional, but keep it empty as requested.
+        
+        const html = `
+            <div class="email-capture">
+                <h3>✨ Your Personalized Money Map is Ready ✨</h3>
+                <p>${escapeHtml(curiosityMsg)}</p>
+                <div style="background: #00000030; border-radius: 1.5rem; padding: 0.2rem; margin-bottom: 0.5rem;">
+                    <p style="font-weight: 500; font-size:0.9rem;">🎁 Bonus: Free "Fast Cash 2025" checklist inside</p>
+                </div>
+                <form method="post" action="https://www.sendsteed.com/subscribe/" id="quizEmailForm" class="email-form">
+                    <input name="e123432" required type="text" placeholder="your@email.com" autocomplete="email">
+                    <input type="hidden" name="lllid" value="123432">
+                    <input type="hidden" name="lluid" value="sandyarta">
+                    <input type="hidden" name="redirect" value="">
+                    <input type="hidden" name="source" value="quizneu">
+                    <button type="submit">🚀 Send My Insider Kit →</button>
+                </form>
+                <div class="fine-print">No spam, unsubscribe anytime. Instant access after email.</div>
+                <div id="formFeedback" style="margin-top: 12px; font-size: 0.85rem;"></div>
+            </div>
+            <div style="margin-top: 1rem; text-align: center;">
+                <button id="restartQuizBtn" style="background:#2c3e66; color:white; padding:0.6rem 1.2rem;">⟳ Restart Quiz</button>
+            </div>
+        `;
+        quizArea.innerHTML = html;
+        
+        // attach restart functionality
+        const restartBtn = document.getElementById('restartQuizBtn');
+        if (restartBtn) {
+            restartBtn.addEventListener('click', () => {
+                // reset all data
+                currentQuestionIndex = 0;
+                userAnswers = [];
+                quizCompleted = false;
+                updateProgress();
+                renderQuestion();
+            });
+        }
+        
+        // intercept form submission to add any frontend validation / tracking (but submission works natively)
+        const emailForm = document.getElementById('quizEmailForm');
+        if (emailForm) {
+            emailForm.addEventListener('submit', (e) => {
+                // optional frontend: show loading state but not preventing native submit
+                const emailInput = emailForm.querySelector('input[name="e123432"]');
+                const emailValue = emailInput.value.trim();
+                if (!emailValue || !emailValue.includes('@')) {
+                    e.preventDefault();
+                    const feedback = document.getElementById('formFeedback');
+                    if (feedback) {
+                        feedback.innerHTML = '⚠️ Please enter a valid email address to get your roadmap.';
+                        feedback.style.color = '#FFB347';
+                    }
+                    return;
+                }
+                // show "sending..." but we don't prevent, just let it submit to sendsteed
+                const submitBtn = emailForm.querySelector('button');
+                if (submitBtn) {
+                    submitBtn.innerText = '✈️ Sending...';
+                    submitBtn.disabled = true;
+                }
+                // we let the form submit naturally to sendsteed, but we can also store conversion locally.
+                // also the redirect is empty, so user will stay on page after? Usually sendsteed redirects to thank you page, but if redirect empty it might reload same page.
+                // We'll add a little note: after submission a thank you message could appear, but due to external redirect we might not capture.
+                // However we can attach a success marker if they come back.
+                setTimeout(() => {
+                    // not necessary but fine
+                }, 100);
+            });
+        }
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+            return c;
+        });
+    }
+
+    // initial render
+    renderQuestion();
+    updateProgress();
+
+    // small additional effect: if user tries to skip, we make the quiz feel irresistible
+    // Also, we want to track scroll or anything else? not needed.
+</script>
+</body>
+</html>
