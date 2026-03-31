@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Rotator - Automatische Weiterleitung</title>
+    <style>
+        /* Minimales Styling für eine saubere Seite – kein störender Text, nur Funktionalität */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0f1e;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: system-ui, 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        /* Ein unsichtbarer Container – keinerlei sichtbarer Text, nur technische Absicherung */
+        .rotator-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, #11161f, #03060c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            backdrop-filter: blur(2px);
+        }
+
+        /* Mikro-Ladeindikator – absolut diskret, kein Text, nur kleiner Punkt (optional) */
+        .loading-dot {
+            width: 48px;
+            height: 48px;
+            border: 3px solid rgba(255,255,255,0.15);
+            border-top: 3px solid #3b82f6;
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Für den unwahrscheinlichen Fall, dass JS blockiert wird – kein Text, aber sauberer Fallback */
+        .no-js-note {
+            display: none;
+        }
+
+        /* Vollflächig, keine Textausgabe */
+        a, p, h1, h2, div:not(.rotator-container) {
+            user-select: none;
+        }
+    </style>
+    <script>
+        (function() {
+            // --------------------------------------------------------------
+            // Liste aller Ziel-URLs (exakt wie vom Benutzer bereitgestellt)
+            // Keine Änderung, keine Kürzung – 100% original
+            // --------------------------------------------------------------
+            const urls = [
+                "https://50000.worldprofit.ca/?id=6342104",
+                "https://aisuite.worldprofit.ai/?id=6342104",
+                "https://associates.worldprofit.global/?id=6342104",
+                "https://blueprint.worldprofit.online/?id=6342104",
+                "https://crazyprofitszerocost.com/?id=6342104",
+                "https://earnincome.worldprofit.online/?id=6342104",
+                "https://ebookgenie.worldprofit.ai/?id=6342104",
+                "https://ebookmoney.worldprofit.ai/?id=6342104",
+                "https://fasttrack.worldprofitleadsource.com/?id=6342104",
+                "https://freeadsnow.worldprofitleadsource.com/?id=6342104",
+                "https://freeclassifieds.worldprofit.network/?id=6342104",
+                "https://homebiz2020.com/?id=6342104",
+                "https://homebizsuccess5000.com/?id=6342104",
+                "https://homebizsuccess5000.com/?id=6342104",
+                "https://membership.worldprofit.com/?id=6342104",
+                "https://trafficpowerpack.worldprofit.ai/?id=6342104",
+                "https://worldprofitclassifieds.com/?id=6342104",
+                "https://worldprofit.biz/?id=6342104",
+                "https://llclick.com/ztzfc5kv/",
+                "https://llclick.com/4zb349d5/",
+                "https://llclick.com/d8g9jjfx/",
+                "https://llclick.com/9gszdjt7/",
+                "https://llclick.com/hsm5n3km/",
+                "https://llclick.com/p5nks32w/",
+                "https://llclick.com/chk5yxwx/",
+                "https://llclick.com/nwhjfcn5/",
+                "https://leadsleap.com/?r=sandyarta",
+                "https://leadsleap.com/socialreview/leadsleap.com?r=sandyarta",
+                "https://sendsteed.com/?r=sandyarta",
+                "https://trafficadbar.com/sandyartna?ad=1",
+                "https://trafficadbar.com/sandyartna?paud=7",
+                "https://trafficadbar.com/sandyartna",
+                "https://daily-ads.com/r/1519",
+                "https://daily-ads.com/r/tester"
+            ];
+
+            // Prüfe, ob das Array gültige URLs enthält (mindestens 1)
+            if (!urls || urls.length === 0) {
+                // Fallback: sollte nicht vorkommen, aber für den unwahrscheinlichen Fall einfach eine leere Seite
+                document.write('<body style="background:#000;"></body>');
+                return;
+            }
+
+            // Funktion: zufälligen Index ermitteln (gleichverteilt)
+            function getRandomUrl() {
+                const randomIndex = Math.floor(Math.random() * urls.length);
+                return urls[randomIndex];
+            }
+
+            // Verzögerung von 0-50ms für ultraflüssige redirects – keine sichtbare Wartezeit,
+            // aber der kleine Ladeindikator gibt dem Nutzer kurz Feedback, bevor die neue Seite geladen wird.
+            // Dies verhindert auch seltene Race Conditions bei manchen Browsern.
+            const targetUrl = getRandomUrl();
+            
+            // Optionale kleine Verzögerung (50ms) – nur um dem Browser Zeit für sessionStorage/Historie zu geben
+            // Ist kein störender Text, sorgt aber für saubere Weiterleitung.
+            // Wenn sofortiger redirect gewünscht, kann 0ms verwendet werden. Hier 20ms für Stabilität.
+            setTimeout(function() {
+                // Führe die Weiterleitung durch – öffnet die zufällige Seite im selben Tab (wie gefordert)
+                window.location.replace(targetUrl);
+            }, 20);
+        })();
+    </script>
+</head>
+<body>
+    <!-- Diese Seite enthält KEINEN sichtbaren Text, nur einen optischen Ladekreis während der millisekündigen Verzögerung.
+         Sobald der Redirect ausgeführt wird, verschwindet dieser Container und die Zielseite wird geladen. -->
+    <div class="rotator-container" id="rotatorOverlay">
+        <div class="loading-dot"></div>
+    </div>
+    <!-- Absolut kein erklärender Text, keine Fußzeile, keine sichtbare URL, keine Schaltfläche – nur Rotator-Funktion -->
+</body>
+</html>
