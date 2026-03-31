@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Zero-Cost Monetization | Free Training</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0a0c0f;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    /* FULLSCREEN IMAGE CONTAINER — exactly the GIF, covering entire viewport */
+    .fullscreen-img {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    /* The GIF itself: ensures it covers whole screen without distortion */
+    .fullscreen-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;      /* covers full area, maintains visual impact */
+      object-position: center;
+      display: block;
+    }
+
+    /* MODAL OVERLAY – CUSTOM POPUP (works even if browser popups are disabled) */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0.2s, opacity 0.2s ease;
+    }
+
+    /* Active state for popup */
+    .modal-overlay.active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    /* Popup card */
+    .popup-card {
+      background: linear-gradient(145deg, #ffffff 0%, #f8faff 100%);
+      max-width: 480px;
+      width: 90%;
+      border-radius: 42px;
+      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255,255,255,0.2);
+      padding: 2rem 2rem 2.2rem;
+      text-align: center;
+      animation: fadeSlideUp 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      font-family: inherit;
+    }
+
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Headline */
+    .popup-card h3 {
+      font-size: 1.9rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #1e2b3c, #0f2c3b);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.3px;
+    }
+
+    .popup-sub {
+      font-size: 1rem;
+      color: #2c3e44;
+      margin-bottom: 1.8rem;
+      font-weight: 500;
+      border-bottom: 1px solid #e2e8f0;
+      display: inline-block;
+      padding-bottom: 6px;
+    }
+
+    /* Email field */
+    .email-field {
+      width: 100%;
+      padding: 1rem 1.2rem;
+      font-size: 1rem;
+      border: 2px solid #e2edf2;
+      border-radius: 60px;
+      outline: none;
+      background: white;
+      transition: all 0.2s;
+      margin-bottom: 1.2rem;
+      font-weight: 500;
+      color: #0a1c24;
+    }
+
+    .email-field:focus {
+      border-color: #0077b6;
+      box-shadow: 0 0 0 3px rgba(0,119,182,0.2);
+    }
+
+    /* Button wrapper with arrow */
+    .submit-btn {
+      background: #0f2c3b;
+      border: none;
+      width: 100%;
+      padding: 1rem 1.2rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: 0.2s;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+    }
+
+    .submit-btn:hover {
+      background: #1e4a62;
+      transform: scale(0.98);
+      gap: 14px;
+    }
+
+    .arrow-icon {
+      font-size: 1.4rem;
+      transition: transform 0.2s;
+    }
+
+    .submit-btn:hover .arrow-icon {
+      transform: translateX(5px);
+    }
+
+    /* close button */
+    .close-popup {
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+      color: #7f8c8d;
+      cursor: pointer;
+      display: inline-block;
+      border-bottom: 1px dashed #bdc3c7;
+      transition: 0.1s;
+    }
+
+    .close-popup:hover {
+      color: #1e2f3a;
+    }
+
+    /* responsive touch */
+    @media (max-width: 550px) {
+      .popup-card {
+        padding: 1.6rem;
+      }
+      .popup-card h3 {
+        font-size: 1.6rem;
+      }
+      .submit-btn {
+        font-size: 1rem;
+        padding: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FULLSCREEN CLICKABLE GIF: exactly the image from your provided URL -->
+  <div class="fullscreen-img" id="clickableImageArea">
+    <img src="https://imgallery.llsvr.com/sandyarta.69cb96fe277fe.gif" alt="The 47 Second Hack To HAVE OTHER People Make YOU Money Online... (That's Also 100% FREE To Use!)">
+  </div>
+
+  <!-- CUSTOM POPUP MODAL - WORKS EVEN IF POPUPS ARE DISABLED (no window.open, just DOM overlay) -->
+  <div id="emailPopup" class="modal-overlay">
+    <div class="popup-card">
+      <h3>🔥 Where Should We Send <br> The Training? 👇</h3>
+      <div class="popup-sub">100% free · Instant access</div>
+      
+      <!-- EMAIL FORM: exactly your sendsteed code with proper fields + arrow button -->
+      <form method="post" action="https://www.sendsteed.com/subscribe/" id="steedForm">
+        <input type="email" name="e123432" id="emailInput" required placeholder="your@email.com" class="email-field">
+        <input type="hidden" name="lllid" value="123432">
+        <input type="hidden" name="lluid" value="sandyarta">
+        <input type="hidden" name="redirect" id="redirectField" value="">
+        <input type="hidden" name="source" id="sourceField" value="offerlabpage">
+        <button type="submit" class="submit-btn">
+          Click Here To Get Instant Access
+          <span class="arrow-icon">→</span>
+        </button>
+      </form>
+      <div class="close-popup" id="closePopupBtn">✖ close</div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // --- ELEMENTS ---
+      const imageContainer = document.getElementById('clickableImageArea');
+      const popupOverlay = document.getElementById('emailPopup');
+      const closePopupBtn = document.getElementById('closePopupBtn');
+      const steedForm = document.getElementById('steedForm');
+      const redirectInput = document.getElementById('redirectField');
+      const sourceInput = document.getElementById('sourceField');
+      const emailField = document.getElementById('emailInput');
+
+      // --- POPUP BEHAVIOR: open modal on ANY click on image / fullscreen area ---
+      function openPopup() {
+        popupOverlay.classList.add('active');
+        setTimeout(() => {
+          if (emailField) emailField.focus();
+        }, 100);
+      }
+
+      function closePopup() {
+        popupOverlay.classList.remove('active');
+      }
+
+      // Click on image triggers popup
+      if (imageContainer) {
+        imageContainer.addEventListener('click', (e) => {
+          e.stopPropagation();
+          openPopup();
+        });
+      }
+
+      // Close popup when clicking on the close text
+      if (closePopupBtn) {
+        closePopupBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          closePopup();
+        });
+      }
+
+      // Clicking on overlay background also closes popup
+      if (popupOverlay) {
+        popupOverlay.addEventListener('click', (e) => {
+          if (e.target === popupOverlay) {
+            closePopup();
+          }
+        });
+      }
+
+      // Ensure source = "offerlabpage" as required
+      if (sourceInput) {
+        sourceInput.value = "offerlabpage";
+      }
+      if (redirectInput) {
+        redirectInput.value = "";
+      }
+
+      // Form submission handling with loading state and double-click prevention
+      let isSubmitting = false;
+      if (steedForm) {
+        steedForm.addEventListener('submit', function(e) {
+          if (!emailField.value.trim() || !emailField.validity.valid) {
+            e.preventDefault();
+            alert("Please enter a valid email address to get instant access.");
+            return;
+          }
+          
+          if (isSubmitting) {
+            e.preventDefault();
+            return;
+          }
+          isSubmitting = true;
+          const btn = steedForm.querySelector('.submit-btn');
+          const originalHTML = btn.innerHTML;
+          btn.innerHTML = '✨ Sending... ✨';
+          btn.disabled = true;
+          
+          // Reset button state after 8 seconds in case of network hang (safety)
+          setTimeout(() => {
+            if (btn.disabled === true) {
+              btn.innerHTML = originalHTML;
+              btn.disabled = false;
+              isSubmitting = false;
+            }
+          }, 8000);
+        });
+      }
+
+      // Stop propagation inside popup card to avoid accidental closing
+      const popupCard = document.querySelector('.popup-card');
+      if (popupCard) {
+        popupCard.addEventListener('click', (e) => {
+          e.stopPropagation();
+        });
+      }
+
+      // ESC key closes popup
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && popupOverlay && popupOverlay.classList.contains('active')) {
+          closePopup();
+        }
+      });
+
+      // Optional: fallback if the image fails to load (just in case)
+      const gifImg = document.querySelector('.fullscreen-img img');
+      if (gifImg) {
+        gifImg.onerror = function() {
+          this.style.display = 'none';
+          const parent = this.parentElement;
+          parent.style.background = '#0a0f12';
+          parent.style.backgroundImage = 'radial-gradient(circle at 30% 20%, #1a2a32, #030607)';
+          const fallbackText = document.createElement('div');
+          fallbackText.innerText = '⚡ The 47 Second Hack ⚡';
+          fallbackText.style.color = 'white';
+          fallbackText.style.fontSize = 'clamp(1.5rem, 6vw, 2.8rem)';
+          fallbackText.style.fontWeight = 'bold';
+          fallbackText.style.textAlign = 'center';
+          fallbackText.style.padding = '2rem';
+          fallbackText.style.fontFamily = 'system-ui';
+          parent.appendChild(fallbackText);
+        };
+      }
+    })();
+  </script>
+</body>
+</html>
