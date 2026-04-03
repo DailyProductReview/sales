@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Almost Done - Get This All For Free</title>
+
+<style>
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background:#f2f2f2;
+    margin:0;
+    padding:20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.container{
+    text-align:center;
+    background:white;
+    padding:60px;
+    border-radius:8px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    width:550px;
+    max-width:100%;
+}
+
+/* RED BANNER */
+.marquee-banner {
+    background: linear-gradient(135deg, #ff0000, #cc0000, #ff3333);
+    padding: 25px 0;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    box-shadow: 0 8px 20px rgba(255,0,0,0.4);
+    position: relative;
+    border: 2px solid #ffcc00;
+}
+
+/* SLANTED "GET THIS ALL FOR FREE" - BIGGER & BOLDER */
+.get-free {
+    position: absolute;
+    top: -15px;
+    left: -30px;
+    background: #ffcc00;
+    color: #cc0000;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 12px 50px;
+    transform: rotate(-25deg);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 10;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 2px solid white;
+    white-space: nowrap;
+}
+
+.marquee-content {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+}
+
+.marquee-content img {
+    height: 130px;
+    width: auto;
+    margin: 0 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    vertical-align: middle;
+    border: 3px solid #ffcc00;
+    background: white;
+    padding: 5px;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.marquee-banner:hover .marquee-content {
+    animation-play-state: paused;
+}
+
+h1{
+    font-size:56px;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    font-size:26px;
+    margin-bottom:40px;
+}
+
+input[type="text"]{
+    width:100%;
+    padding:15px;
+    margin-bottom:20px;
+    font-size:18px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    box-sizing:border-box;
+}
+
+button{
+    width:100%;
+    padding:18px;
+    font-size:22px;
+    font-weight:bold;
+    background:#2f63d6;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#244fb0;
+}
+
+.note{
+    margin-top:25px;
+    font-size:16px;
+    color:#333;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- RED BANNER with ONLY "GET THIS ALL FOR FREE" (slanted) -->
+<div class="marquee-banner">
+    
+    <!-- ONLY "GET THIS ALL FOR FREE" - NO LINKS -->
+    <div class="get-free">
+        🔥 GET THIS ALL FOR FREE! 🔥
+    </div>
+    
+    <div class="marquee-content">
+        <img src="https://imgallery.llsvr.com/sandyarta.69bbe525cef20.png" alt="Bonus 1">
+        <img src="https://imgallery.llsvr.com/sandyarta.69bbe53011dda.png" alt="Bonus 2">
+        <img src="https://imgallery.llsvr.com/sandyarta.69bbe4eb31a98.png" alt="Bonus 3">
+        <img src="https://imgallery.llsvr.com/sandyarta.69bbe6da35c20.png" alt="Bonus 4">
+        <img src="https://imgallery.llsvr.com/sandyarta.69bbe76f844fe.png" alt="Bonus 5">
+        <!-- Duplicate for seamless loop -->
+        <img src="https://imgallery.llsvr.com/sandyarta.69bbe525cef20.png" alt="Bonus 1">
+        <img src="https://imgallery.llsvr.com/sandyarta.69bbe53011dda.png" alt="Bonus 2">
+        <img src="https://imgallery.llsvr.com/sandyarta.69bbe4eb31a98.png" alt="Bonus 3">
+        <img src="https://imgallery.llsvr.com/sandyarta.69bbe6da35c20.png" alt="Bonus 4">
+        <img src="https://imgallery.llsvr.com/sandyarta.69bbe76f844fe.png" alt="Bonus 5">
+    </div>
+</div>
+
+<h1>Almost Done!</h1>
+<div class="subtitle">Enter Your Email To Get Started</div>
+
+<form method="post" action="https://www.sendsteed.com/subscribe/">
+    
+    <input name="e123432" required type="text" placeholder="Enter Your Email Address">
+
+    <input type="hidden" name="lllid" value="123432">
+    <input type="hidden" name="lluid" value="sandyarta">
+    <input type="hidden" name="redirect" value="">
+    <input type="hidden" name="source" value="">
+
+    <button type="submit">Activate My Commissions</button>
+
+</form>
+
+<div class="note">
+* Your bonuses will be sent to the email you entered above.
+</div>
+
+</div>
+
+</body>
+</html>
