@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Activate your email | Sandy Arta</title>
+    <title>Activate your email | Free Access</title>
     <style>
         * {
             margin: 0;
@@ -21,87 +22,107 @@
             padding: 1.5rem;
         }
 
-        /* main card container */
         .landing-card {
-            max-width: 680px;
+            max-width: 650px;
             width: 100%;
             background: rgba(18, 25, 45, 0.75);
             backdrop-filter: blur(2px);
             border-radius: 48px;
-            padding: 2rem 2rem 2.5rem 2rem;
+            padding: 2rem;
             box-shadow: 0 30px 45px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
-            transition: all 0.2s ease;
         }
 
-        /* image container — responsive, rounded, elegant */
         .image-wrapper {
             margin-bottom: 2rem;
             text-align: center;
             border-radius: 32px;
             overflow: hidden;
-            background: #01010120;
-            box-shadow: 0 18px 30px -12px rgba(0,0,0,0.4);
         }
 
         .hero-img {
             width: 100%;
             height: auto;
             display: block;
-            transition: transform 0.3s ease;
-        }
-
-        .hero-img:hover {
-            transform: scale(1.01);
-        }
-
-        /* callout text — vibrant color, easy to read */
-        .activation-message {
-            text-align: center;
-            margin: 1.2rem 0 1.8rem 0;
-            padding: 0.5rem;
         }
 
         .glow-text {
+            text-align: center;
             background: linear-gradient(135deg, #FFD966, #FFB347);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
             font-weight: 700;
-            font-size: 1.7rem;
-            letter-spacing: -0.3px;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
         }
 
         .sub-line {
+            text-align: center;
             color: #C0CFEC;
-            font-size: 1.05rem;
-            margin-top: 12px;
-            font-weight: 450;
-            border-bottom: 1px dashed rgba(255,180,70,0.4);
-            display: inline-block;
-            padding-bottom: 5px;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
         }
 
-        /* form styling */
+        /* Benefit bullets - just 3, once, honest */
+        .benefits {
+            background: rgba(10, 15, 28, 0.5);
+            border-radius: 24px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefits ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .benefits li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #EFF3FF;
+            font-size: 0.95rem;
+        }
+
+        .benefits li span:first-child {
+            font-size: 1.3rem;
+        }
+
+        /* What you get - clear, once */
+        .what-you-get {
+            background: rgba(255, 155, 60, 0.1);
+            border-left: 4px solid #FFB347;
+            border-radius: 20px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .what-you-get h3 {
+            color: #FFD68A;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .what-you-get p {
+            color: #eef4ff;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
         .email-form {
-            margin-top: 0.5rem;
-            width: 100%;
+            margin-bottom: 1rem;
         }
 
         .input-group {
             display: flex;
             flex-wrap: wrap;
-            gap: 14px;
-            justify-content: center;
-            background: rgba(10, 14, 23, 0.7);
-            padding: 8px;
-            border-radius: 80px;
-            backdrop-filter: blur(4px);
+            gap: 12px;
         }
 
         .email-input {
             flex: 3;
-            min-width: 210px;
             background: #FFFFFF;
             border: none;
             padding: 1rem 1.5rem;
@@ -109,158 +130,98 @@
             border-radius: 60px;
             font-family: inherit;
             outline: none;
-            transition: 0.2s;
-            color: #0a0f1e;
-            font-weight: 500;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
         .email-input:focus {
-            box-shadow: 0 0 0 3px #FFB347, 0 2px 8px rgba(0,0,0,0.1);
-            background: #fffef7;
-        }
-
-        .email-input::placeholder {
-            color: #6c7a9e;
-            font-weight: 400;
+            box-shadow: 0 0 0 3px #FFB347;
         }
 
         .submit-btn {
             flex: 1;
-            min-width: 130px;
             background: linear-gradient(105deg, #FF9A3C, #FF6F3C);
             border: none;
             padding: 1rem 1.2rem;
             font-size: 1rem;
             font-weight: 700;
-            font-family: inherit;
             color: white;
             border-radius: 60px;
             cursor: pointer;
-            transition: all 0.2s ease;
-            letter-spacing: 0.5px;
-            box-shadow: 0 6px 14px rgba(255, 100, 30, 0.3);
-            text-shadow: 0 1px 0 rgba(0,0,0,0.1);
         }
 
         .submit-btn:hover {
             background: linear-gradient(105deg, #FF8820, #FF5A1F);
-            transform: scale(1.02);
-            box-shadow: 0 10px 18px rgba(255, 80, 20, 0.4);
         }
 
-        .submit-btn:active {
-            transform: scale(0.98);
-        }
-
-        /* hidden fields are fine, just style note */
-        .hidden-fields {
-            display: none;
-        }
-
-        /* extra hint text — colored helper */
         .info-note {
             text-align: center;
-            margin-top: 1.6rem;
-            font-size: 0.85rem;
-            background: rgba(0, 0, 0, 0.35);
-            backdrop-filter: blur(2px);
-            padding: 0.6rem 1rem;
-            border-radius: 60px;
-            width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 0.8rem;
             color: #ffdd99;
-            font-weight: 500;
-            border: 0.5px solid rgba(255, 180, 70, 0.4);
+            background: rgba(0,0,0,0.3);
+            padding: 0.6rem;
+            border-radius: 40px;
         }
 
-        .info-note span {
-            font-weight: bold;
-            color: #FFC107;
-        }
-
-        /* responsive adjustments */
         @media (max-width: 550px) {
             .landing-card {
                 padding: 1.5rem;
             }
-            .glow-text {
-                font-size: 1.4rem;
-            }
             .input-group {
                 flex-direction: column;
-                background: transparent;
-                padding: 0;
-                gap: 12px;
             }
             .email-input, .submit-btn {
                 width: 100%;
-                border-radius: 50px;
             }
-            .info-note {
-                font-size: 0.75rem;
+            .glow-text {
+                font-size: 1.4rem;
             }
-        }
-
-        /* subtle animation for the form load */
-        @keyframes fadeSlide {
-            0% { opacity: 0; transform: translateY(8px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        .landing-card {
-            animation: fadeSlide 0.5s ease-out;
-        }
-
-        /* make sure image is never cut weird */
-        img {
-            max-width: 100%;
-            height: auto;
-            vertical-align: middle;
-        }
-
-        /* additional micro interaction */
-        .submit-btn:focus-visible {
-            outline: 3px solid #FFD966;
-            outline-offset: 2px;
         }
     </style>
 </head>
 <body>
     <div class="landing-card">
-        <!-- ONLY the image from the given URL -->
+        <!-- Image -->
         <div class="image-wrapper">
-            <img class="hero-img" src="https://imgallery.llsvr.com/sandyarta.69e13caa411bc.png" alt="Sandy Arta visual | The Billionaire Brainwave" loading="eager">
+            <img class="hero-img" src="https://imgallery.llsvr.com/sandyarta.69e13caa411bc.png" alt="Sandy Arta" loading="eager">
         </div>
 
-        <!-- short colorful text: activate email & receive link -->
-        <div class="activation-message">
-            <div class="glow-text">
-                ✨ ACTIVATE YOUR EMAIL ✨
-            </div>
-            <div class="sub-line">
-                🔗 We'll send the access link straight to your inbox
-            </div>
+        <!-- Headline -->
+        <div class="glow-text">
+            ✨ ACTIVATE YOUR EMAIL ✨
+        </div>
+        <div class="sub-line">
+            We'll send the access link to your inbox
         </div>
 
-        <!-- email form + hidden fields exactly as provided + extra styling -->
+        <!-- 2-3 benefit bullets - honest, once -->
+        <div class="benefits">
+            <ul>
+                <li><span>🎧</span> Free access to the "7-min listen" — as many times as you want</li>
+                <li><span>🔄</span> No hidden fees, no credit card required</li>
+                <li><span>📬</span> Instant link after email confirmation</li>
+            </ul>
+        </div>
+
+        <!-- What you get after signup - clear result -->
+        <div class="what-you-get">
+            <h3>📦 What you get after signup</h3>
+            <p>An email with your personal access link → click it → listen to "7-min listen" for free, as often as you like.</p>
+        </div>
+
+        <!-- Form -->
         <form method="post" action="https://www.sendsteed.com/subscribe/" class="email-form">
             <div class="input-group">
                 <input class="email-input" name="e125079" required type="text" placeholder="your@email.com" autocomplete="email">
                 <button type="submit" class="submit-btn">Send Link →</button>
             </div>
-            
-            <!-- hidden fields exactly as requested (lllid, lluid, redirect, source) -->
             <input type="hidden" name="lllid" value="125079">
             <input type="hidden" name="lluid" value="sandyarta">
             <input type="hidden" name="redirect" value="">
             <input type="hidden" name="source" value="twicebrainpage">
         </form>
 
-        <!-- extra subtle hint: visual reminder that link will be sent (colorful) -->
+        <!-- Footer - honest & simple -->
         <div class="info-note">
-            ⚡ <span>Check your inbox</span> — we'll email you the magic link. No spam, just instant access.
+            ⚡ 100% free · No spam · Listen as many times as you want
         </div>
     </div>
 </body>
