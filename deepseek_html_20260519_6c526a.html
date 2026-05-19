@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Ambassador Program - 7-Day Free Trial | $104K/Month on Autopilot</title>
+    <!-- Google Fonts for clean, modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, #0a0f1c 0%, #0f172a 100%);
+            color: #eef2ff;
+            line-height: 1.4;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        /* Main card container */
+        .landing-card {
+            max-width: 1100px;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(3px);
+            border-radius: 2.5rem;
+            box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 215, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .content-wrapper {
+            padding: 2.8rem 2rem 3rem;
+        }
+
+        /* Main Title */
+        .main-title {
+            font-size: clamp(1.8rem, 7vw, 3.4rem);
+            font-weight: 800;
+            line-height: 1.2;
+            text-align: center;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #FFFFFF, #FFE6A3, #FFC857);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Subtitle / Income block */
+        .income-block {
+            background: linear-gradient(115deg, #111827, #0b0f1a);
+            border-radius: 2rem;
+            padding: 1.8rem 1.5rem;
+            margin: 1.5rem 0 2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 200, 70, 0.25);
+            box-shadow: 0 15px 25px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .amount {
+            font-size: clamp(2.3rem, 8vw, 3.8rem);
+            font-weight: 800;
+            color: #FBBF24;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .month-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            color: #cbd5e6;
+        }
+
+        .autopilot-line {
+            font-size: 1rem;
+            font-weight: 600;
+            background: rgba(255, 215, 0, 0.08);
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            margin-top: 0.9rem;
+            color: #FFDF85;
+            border: 0.5px solid rgba(255, 200, 70, 0.3);
+        }
+
+        /* Button container */
+        .button-container {
+            text-align: center;
+            margin: 2rem 0 1.8rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(100deg, #F59E0B, #D97706);
+            color: #0b1120;
+            font-weight: 800;
+            font-size: 1.4rem;
+            padding: 1rem 2.5rem;
+            border-radius: 80px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            box-shadow: 0 15px 25px -8px rgba(245, 158, 11, 0.45);
+            letter-spacing: -0.2px;
+            text-align: center;
+            min-width: 280px;
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(100deg, #FBBF24, #F59E0B);
+            box-shadow: 0 22px 28px -10px rgba(245, 158, 11, 0.65);
+            color: #000000;
+        }
+
+        .cta-button:active {
+            transform: translateY(2px);
+        }
+
+        /* Image section directly below the button */
+        .image-section {
+            text-align: center;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .proof-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 200, 70, 0.25);
+            transition: transform 0.2s ease;
+        }
+
+        .proof-image:hover {
+            transform: scale(1.01);
+        }
+
+        /* Minimal footer (just to keep clean, no extra claims) */
+        .simple-footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.7rem;
+            color: #5b6e8c;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .content-wrapper {
+                padding: 1.8rem;
+            }
+            .cta-button {
+                font-size: 1.2rem;
+                padding: 0.8rem 1.5rem;
+                min-width: 220px;
+            }
+            .income-block {
+                padding: 1.2rem;
+            }
+            .amount {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* simple fade animation */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .landing-card {
+            animation: fadeUp 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="landing-card">
+        <div class="content-wrapper">
+            <!-- Main Title: "TRY OUT THE AMBASSADOR PROGRAM FREE FOR 7 DAYS..." -->
+            <h1 class="main-title">
+                TRY OUT THE AMBASSADOR PROGRAM <br>
+                <span style="background: linear-gradient(120deg, #FFE68F, #FFB347); background-clip: text; -webkit-background-clip: text; color: transparent;">FREE FOR 7 DAYS</span>
+            </h1>
+
+            <!-- Income statement: "HOW I GENERATE UP TO $104,170.53 A MONTH ON AUTOPILOT USING THIS PROVEN SALES MACHINE TO GENERATE LEADS, SALES & COMMISSIONS 24/7" -->
+            <div class="income-block">
+                <div class="amount">$104,170.53</div>
+                <div class="month-text">per month generated on autopilot</div>
+                <div class="autopilot-line">
+                    ⚡ Proven sales machine • Leads, Sales & Commissions 24/7
+                </div>
+            </div>
+
+            <!-- Button (exactly with the given ClickBank link) -->
+            <div class="button-container">
+                <a href="https://hop.clickbank.net/?affiliate=verborgene&vendor=ambsador&cbpage=ambassador-trial" 
+                   class="cta-button" 
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                    👉 START MY 7-DAY FREE TRIAL 👈
+                </a>
+            </div>
+
+            <!-- Image directly below the button (exactly as requested) -->
+            <div class="image-section">
+                <img class="proof-image" 
+                     src="https://imgallery.llsvr.com/sandyarta.6a0c297e77d9a.png" 
+                     alt="Ambassador Program Dashboard Preview" 
+                     loading="eager">
+            </div>
+
+            <!-- Very minimal footer with only legal/link info - no extra badges or claims -->
+            <div class="simple-footer">
+                <span>Secure ClickBank checkout | 7-day free trial access</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
