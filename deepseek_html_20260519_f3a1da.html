@@ -101,7 +101,7 @@
             box-shadow: 0 12px 24px rgba(231,111,81,0.4);
         }
 
-        /* THREE STORIES GRID - EXTREMELY LARGE IMAGES & FULLY VISIBLE */
+        /* TWO STORIES GRID - EXTREMELY LARGE IMAGES & FULLY VISIBLE */
         .stories-grid {
             display: flex;
             flex-wrap: wrap;
@@ -207,6 +207,92 @@
             width: 100%;
         }
 
+        /* BONUS GALLERY SECTION - EXTRA LARGE IMAGES, FULLY VISIBLE */
+        .bonus-gallery {
+            background: linear-gradient(145deg, #ffffff, #F7F9FE);
+            border-radius: 48px;
+            padding: 2rem 1.8rem;
+            margin: 2rem 0;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.05);
+            border: 1px solid #eef2fa;
+        }
+        .bonus-gallery h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(120deg, #2A9D8F, #1F3A5F);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .bonus-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+        .bonus-item {
+            flex: 1 1 280px;
+            max-width: 320px;
+            background: #fff;
+            border-radius: 28px;
+            padding: 1rem;
+            transition: transform 0.2s ease;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .bonus-item:hover {
+            transform: scale(1.02);
+        }
+        .bonus-img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border: 2px solid #eef2f6;
+            background: #fefefe;
+            transition: all 0.2s;
+        }
+        .bonus-label {
+            font-weight: 800;
+            margin-top: 0.8rem;
+            font-size: 1rem;
+            color: #E76F51;
+            background: #FFF2E6;
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 32px;
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.2);
+            margin: 1.5rem 0;
+            background: #000;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 32px;
+            border: 0;
+        }
+        .video-caption {
+            padding: 0.8rem;
+            text-align: center;
+            background: transparent;
+            color: #1F3A5F;
+            font-weight: 500;
+        }
+
         .bonus-section {
             background: #2D3E50;
             color: white;
@@ -225,31 +311,6 @@
             border-radius: 30px;
         }
 
-        .video-wrapper {
-            background: #1A2C3E;
-            border-radius: 32px;
-            overflow: hidden;
-            margin: 1.5rem 0;
-            position: relative;
-            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.2);
-        }
-
-        .video-preview video {
-            width: 100%;
-            display: block;
-            background: #000;
-            max-height: 500px;
-            object-fit: cover;
-        }
-
-        .video-caption {
-            padding: 0.8rem;
-            text-align: center;
-            background: #1A2C3E;
-            color: white;
-            font-weight: 500;
-        }
-
         footer {
             margin-top: 4rem;
             font-size: 0.75rem;
@@ -266,18 +327,17 @@
             .story-name { font-size: 1.5rem; }
             .story-card img:first-of-type { width: 120px; height: 120px; }
             .story-card { padding: 1.5rem; }
+            .bonus-gallery h3 { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- Hero Section with title and CTA -->
+    <!-- Hero Section -->
     <div class="hero">
         <div class="badge"><i class="fas fa-fire"></i> SAVE 80% LIMITED TIME</div>
         <h1>ClickMachine <span style="background: #F4A26120; padding: 0 8px;">Real Buyer Traffic</span><br>No Bots. Pure Conversions.</h1>
-        
-        <!-- REMOVED the entire Discover the Secret paragraph and bonus/note lines as requested -->
         
         <div class="price-box">
             <span class="old-price">$24.95/month</span>
@@ -288,7 +348,6 @@
             <a href="https://warriorplus.com/o2/a/ypqm582/0/reviewmpic" target="_blank" rel="noopener noreferrer" class="btn-primary" id="affiliateBtn">
                 <i class="fas fa-rocket"></i> GET INSTANT ACCESS <i class="fas fa-external-link-alt"></i>
             </a>
-            <!-- The requested text "***Please Note The More You Click..." and "NEW monthly comp..." has been COMPLETELY REMOVED -->
         </div>
     </div>
 
@@ -301,22 +360,21 @@
         <p style="margin-top: 0.8rem; font-weight: 500;"><i class="fas fa-check-circle" style="color:#2A9D8F;"></i> Real buyer data, high open rates, premium geo (US, UK, CA, AU)</p>
     </div>
 
-    <!-- THREE SUCCESS STORIES with EXTREMELY LARGE IMAGES (full size, completely visible) -->
+    <!-- TWO SUCCESS STORIES with EXTREMELY LARGE IMAGES -->
     <h2 class="section-title" style="font-size: 2.2rem; font-weight: 800; text-align: center; margin: 1rem 0 0.5rem; background: linear-gradient(120deg, #1F3A5F, #2A9D8F); -webkit-background-clip: text; background-clip: text; color: transparent;"><i class="fas fa-chalkboard-user"></i> ClickMachine Members SUCCESS STORIES</h2>
     
     <div class="stories-grid">
-        <!-- STORY 1 - Steve Bates: avatar + large proof image -->
+        <!-- STORY 1 - Steve Bates -->
         <div class="story-card">
             <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Steve Bates" onerror="this.src='https://ui-avatars.com/api/?background=F4A261&color=fff&name=Steve+Bates&size=160'">
             <div class="story-name">Steve Bates</div>
             <div class="story-role">⭐ Verified Power User</div>
             <div class="story-quote">“Tony is one of the few gentlemen in the IM industry. When Tony launched ClickMachine, I knew right away it was something special. It gives you free, 100% automated real human traffic without bots or hidden costs. A must-have for all online offers.”</div>
-            <!-- MASSIVE PROOF IMAGE - FULLY VISIBLE -->
-            <img src="https://imgallery.llsvr.com/sandyarta.69f8f3322c06f.png" alt="Steve Bates sales proof - conversion boost" class="proof-img-massive">
+            <img src="https://imgallery.llsvr.com/sandyarta.69f8f3322c06f.png" alt="Steve Bates sales proof" class="proof-img-massive">
             <div class="stats-badge"><i class="fas fa-chart-line"></i> +327% conversions in 14 days</div>
         </div>
 
-        <!-- STORY 2 - Stephen Brocklehurst: large images -->
+        <!-- STORY 2 - Stephen Brocklehurst -->
         <div class="story-card">
             <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Stephen Brocklehurst" onerror="this.src='https://ui-avatars.com/api/?background=E76F51&color=fff&name=Stephen+B&size=160'">
             <div class="story-name">Stephen Brocklehurst</div>
@@ -325,33 +383,48 @@
             <img src="https://imgallery.llsvr.com/sandyarta.69564dc99a6eb.png" alt="Stephen income boost" class="proof-img-massive">
             <div class="stats-badge"><i class="fas fa-trophy"></i> 2x leads & record sales</div>
         </div>
-
-        <!-- STORY 3 - Amien Jacobs: large images -->
-        <div class="story-card">
-            <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Amien Jacobs" onerror="this.src='https://ui-avatars.com/api/?background=2A9D8F&color=fff&name=Amien+J&size=160'">
-            <div class="story-name">Amien Jacobs</div>
-            <div class="story-role">💡 Top Marketer</div>
-            <div class="story-quote">“Tony never fails to amaze with his products and ClickMachine is no different. I’ve come to know Tony as an internet marketer who places great value on customer support and is always keen on helping others succeed.”</div>
-            <img src="https://imgallery.llsvr.com/sandyarta.69564dc99a6eb.png" alt="Amien Jacobs growth" class="proof-img-massive">
-            <div class="stats-badge"><i class="fas fa-users"></i> consistent daily buyer traffic</div>
-        </div>
     </div>
 
-    <!-- VIDEO SECTION: embedded video NOT from YouTube, native player only -->
-    <div style="margin: 2rem 0;">
-        <div style="text-align: center; margin-bottom: 0.5rem;"><i class="fas fa-play-circle" style="font-size: 2rem; color:#E76F51;"></i> <strong style="font-size: 1.3rem;">Watch ClickMachine in Action</strong></div>
-        <div class="video-wrapper">
-            <div class="video-preview">
-                <video controls preload="metadata" style="width:100%; max-height: 460px; background:#0a1a2a;" poster="https://imgallery.llsvr.com/sandyarta.6a0cb48aa8562.png">
-                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
-                    Your browser does not support the video tag. ClickMachine demo: real human traffic system.
-                </video>
+    <!-- BONUS GALLERY SECTION - EXTRA 5 BONUSES (large, fully visible) -->
+    <div class="bonus-gallery">
+        <h3><i class="fas fa-gift"></i> EXCLUSIVE FAST-ACTION BONUSES</h3>
+        <p style="text-align: center; margin-bottom: 1rem; font-size: 1.1rem;">These 5 high-value bonuses are included when you get ClickMachine today!</p>
+        <div class="bonus-grid">
+            <div class="bonus-item">
+                <img src="https://imgallery.llsvr.com/sandyarta.69bbe525cef20.png" alt="Bonus 1" class="bonus-img">
+                <div class="bonus-label">🎁 BONUS 1</div>
             </div>
-            <div class="video-caption">
-                <i class="fas fa-chart-line"></i> How ClickMachine Delivers HIGH-QUALITY Buyer Traffic | Native Player – No YouTube Redirect
+            <div class="bonus-item">
+                <img src="https://imgallery.llsvr.com/sandyarta.69bbe53011dda.png" alt="Bonus 2" class="bonus-img">
+                <div class="bonus-label">🎁 BONUS 2</div>
+            </div>
+            <div class="bonus-item">
+                <img src="https://imgallery.llsvr.com/sandyarta.69bbe4eb31a98.png" alt="Bonus 3" class="bonus-img">
+                <div class="bonus-label">🎁 BONUS 3</div>
+            </div>
+            <div class="bonus-item">
+                <img src="https://imgallery.llsvr.com/sandyarta.69bbe6da35c20.png" alt="Bonus 4" class="bonus-img">
+                <div class="bonus-label">🎁 BONUS 4</div>
+            </div>
+            <div class="bonus-item">
+                <img src="https://imgallery.llsvr.com/sandyarta.69bbe76f844fe.png" alt="Bonus 5" class="bonus-img">
+                <div class="bonus-label">🎁 BONUS 5</div>
             </div>
         </div>
-        <p style="font-size: 0.85rem; text-align: center;">🔥 See the automated rotator system generating leads & sales in real-time</p>
+        <p style="text-align: center; margin-top: 1.5rem; font-weight: 600; background: #E9F5F2; padding: 0.5rem; border-radius: 60px; max-width: 80%; margin-left: auto; margin-right: auto;">
+            <i class="fas fa-check-circle" style="color:#2A9D8F;"></i> These bonuses are yours FREE when you act now!
+        </p>
+    </div>
+
+    <!-- VIDEO SECTION: YouTube embed -->
+    <div style="margin: 1rem 0 2rem 0;">
+        <div style="text-align: center; margin-bottom: 1rem;"><i class="fas fa-play-circle" style="font-size: 2rem; color:#E76F51;"></i> <strong style="font-size: 1.3rem;">Watch ClickMachine in Action</strong></div>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/EX4Y7pZnjPU?si=rnNGDdLa38QDk2Ap" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="video-caption">
+            <i class="fas fa-chart-line"></i> See how ClickMachine delivers REAL buyer traffic on autopilot
+        </div>
     </div>
 
     <!-- Fast Action Bonus & Tony Earp Message -->
@@ -362,12 +435,12 @@
         <p style="margin-top: 0.5rem;"><strong>Tony Earp</strong> - IM Veteran & Creator of ClickMachine</p>
     </div>
 
-    <!-- Disclaimer + WarriorPlus note -->
+    <!-- Disclaimer -->
     <div style="background: #F8FAFE; border-radius: 24px; padding: 1rem 1.5rem; margin: 1rem 0; font-size: 0.7rem; color: #5d6f83;">
         <i class="fas fa-info-circle"></i> Disclaimer: WarriorPlus is used to help manage the sale of products on this site. While WarriorPlus helps facilitate the sale, all payments are made directly to the product vendor and NOT WarriorPlus. Thus, all product questions, support inquiries and/or refund requests must be sent to the vendor. WarriorPlus’s role should not be construed as an endorsement, approval or review of these products or any claim, statement or opinion used in the marketing of these products.
     </div>
 
-    <!-- Second CTA button with aff link again (opens new window) -->
+    <!-- Second CTA -->
     <div style="text-align: center; margin: 2rem 0 1rem;">
         <a href="https://warriorplus.com/o2/a/ypqm582/0/reviewmpic" target="_blank" rel="noopener noreferrer" class="btn-primary" style="background: linear-gradient(95deg,#2A9D8F,#21867A);">
             <i class="fas fa-shopping-cart"></i> Get ClickMachine & Save 80% Now
@@ -382,13 +455,12 @@
 
 <script>
     (function() {
-        // Ensure all warriorplus links open in new tab securely
         const affButtons = document.querySelectorAll('a[href*="warriorplus.com/o2/a/ypqm582"]');
         affButtons.forEach(btn => {
             btn.setAttribute('target', '_blank');
             btn.setAttribute('rel', 'noopener noreferrer');
         });
-        console.log("ClickMachine - Extreme large images, removed extra text lines as requested.");
+        console.log("ClickMachine - 5 extra bonuses added, large images, third story removed, video embedded.");
     })();
 </script>
 </body>
