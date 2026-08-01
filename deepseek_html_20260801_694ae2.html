@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Turn $25 into $500 Daily</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0b0d0f;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      padding: 1.5rem;
+      margin: 0;
+    }
+
+    .landing-card {
+      max-width: 740px;
+      width: 100%;
+      background: #14171c;
+      border-radius: 2.5rem;
+      padding: 2.8rem 2.5rem 3rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.03);
+      transition: all 0.2s ease;
+      border: 1px solid #2a2e35;
+    }
+
+    /* title style – crisp, bold, high contrast */
+    .hero-title {
+      font-size: 2.7rem;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      text-align: center;
+      color: #f0f3f8;
+      text-shadow: 0 4px 12px rgba(0, 20, 40, 0.6);
+      margin-bottom: 0.5rem;
+      word-break: break-word;
+    }
+
+    .hero-title span {
+      background: linear-gradient(145deg, #f5c542, #f9b81b);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 12px rgba(245, 197, 66, 0.3);
+    }
+
+    .sub-headline {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #b1b9c9;
+      margin-top: 0.2rem;
+      margin-bottom: 2.2rem;
+      letter-spacing: 0.3px;
+      border-bottom: 1px dashed #2f3540;
+      padding-bottom: 1.5rem;
+    }
+
+    .sub-headline i {
+      font-style: normal;
+      background: #1e232b;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      color: #d3def0;
+      font-weight: 500;
+    }
+
+    /* form layout */
+    .gogvo-form {
+      margin-top: 0.8rem;
+    }
+
+    .gogvo-form table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .gogvo-form tr {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1.5rem;
+    }
+
+    .gogvo-form td {
+      display: block;
+      width: 100%;
+      padding: 0;
+    }
+
+    .gogvo-form label {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #cdd7e6;
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+
+    .gogvo-form input[type="text"] {
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      background: #1e242c;
+      border: 1px solid #313a44;
+      border-radius: 60px;
+      font-size: 1rem;
+      color: #f0f4fe;
+      transition: all 0.2s;
+      outline: none;
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .gogvo-form input[type="text"]:focus {
+      border-color: #4a8cff;
+      background: #1a2028;
+      box-shadow: 0 0 0 3px rgba(60, 130, 255, 0.2), inset 0 2px 6px #0a0e12;
+    }
+
+    .gogvo-form input[type="text"]::placeholder {
+      color: #6f7a8a;
+      font-weight: 300;
+      opacity: 0.7;
+    }
+
+    /* button wrapper – align center */
+    .submit-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 0.8rem;
+      width: 100%;
+    }
+
+    /* SUPER BLUE button – big, bold, visible */
+    .btn-super-blue {
+      background: #1a6aff;
+      background: linear-gradient(145deg, #1a6aff, #0a4bd0);
+      border: none;
+      padding: 1rem 2.8rem;
+      border-radius: 80px;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0, 20, 40, 0.5);
+      box-shadow: 0 12px 24px -6px rgba(20, 80, 255, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      width: 100%;
+      max-width: 380px;
+      border: 1px solid #4b8aff;
+    }
+
+    .btn-super-blue:hover {
+      background: #2d7aff;
+      background: linear-gradient(145deg, #2d7aff, #1a5ee0);
+      transform: scale(1.01);
+      box-shadow: 0 16px 32px -6px #1a6aff7f;
+    }
+
+    .btn-super-blue:active {
+      transform: scale(0.97);
+      background: #0f4fd0;
+      box-shadow: 0 4px 12px rgba(0, 40, 120, 0.8);
+    }
+
+    /* fine print / hidden img from original form */
+    .tracking-pixel {
+      display: none;
+    }
+
+    /* small adjustments for mobile */
+    @media (max-width: 500px) {
+      .landing-card {
+        padding: 2rem 1.5rem;
+        border-radius: 2rem;
+      }
+      .hero-title {
+        font-size: 2rem;
+      }
+      .sub-headline {
+        font-size: 1rem;
+      }
+      .btn-super-blue {
+        font-size: 1.3rem;
+        padding: 0.9rem 1.8rem;
+        max-width: 100%;
+      }
+    }
+
+    /* additional legibility: high contrast white text on dark */
+    .attribution {
+      text-align: center;
+      color: #3f4756;
+      font-size: 0.7rem;
+      margin-top: 2rem;
+      letter-spacing: 0.5px;
+      border-top: 1px solid #232a32;
+      padding-top: 1.8rem;
+    }
+
+    .attribution a {
+      color: #5a6f8a;
+      text-decoration: none;
+    }
+
+    .attribution a:hover {
+      color: #8aa3c9;
+    }
+
+    /* fix for table alignment: we use flex column, but keep table structure */
+    .gogvo-form table tbody {
+      display: block;
+      width: 100%;
+    }
+
+    .gogvo-form table tr:last-of-type {
+      margin-bottom: 0.5rem;
+    }
+
+    /* improve spacing between fields */
+    .gogvo-form table tr:not(:last-of-type) {
+      margin-bottom: 1.2rem;
+    }
+
+    .gogvo-form table tr:last-of-type td {
+      display: flex;
+      justify-content: center;
+      padding-top: 0.2rem;
+    }
+
+    /* label and input inside td – already block, fine */
+    .gogvo-form td[align="center"] {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    /* hide the old submit inside table if present, but we keep our own button */
+    .gogvo-form input[type="submit"] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="landing-card">
+    <!-- Enhanced Title: "Turn $25 into $500 Daily – easy fast system" -->
+    <h1 class="hero-title">
+      Turn <span>$25</span> into <span>$500</span> Daily
+    </h1>
+    <div class="sub-headline">
+      <i>⚡ easy · fast · proven system</i>
+    </div>
+
+    <!-- FORM: exact action & hidden fields from your code -->
+    <form method="POST" action="https://gogvo.com/subscribe.php" class="gogvo-form">
+      <!-- Hidden fields (Affiliate, Campaign, TrackParam, FormId) -->
+      <input type="hidden" name="AffiliateName" value="natur1984NLS" />
+      <input type="hidden" name="CampaignCode" value="fCbCGBjAERJv" />
+      <input type="hidden" name="TrackParam" value="new_form" />
+      <input type="hidden" name="FormId" value="25235424" />
+
+      <!-- table structure preserved, but styled with flex for clean mobile -->
+      <table align="center">
+        <tbody>
+          <tr>
+            <td>
+              <label for="firstname">First Name</label>
+            </td>
+            <td>
+              <input type="text" name="FirstName" id="firstname" placeholder="e.g. Alex" required />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="email">Email Address</label>
+            </td>
+            <td>
+              <input type="text" name="Email" id="email" placeholder="you@example.com" required />
+            </td>
+          </tr>
+          <tr>
+            <td align="center" colspan="2">
+              <!-- super blue button (replaces original submit) -->
+              <div class="submit-wrapper">
+                <button type="submit" class="btn-super-blue">🚀 Start Now</button>
+              </div>
+              <!-- original submit is hidden via CSS; we keep it for fallback but not visible -->
+              <input type="submit" value="Submit" style="display: none;" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- tracking pixel from original form -->
+      <img src="https://gogvo.com/show_form.php?id=25235424&TrackParam=new_form" class="tracking-pixel" alt="" />
+    </form>
+
+    <div class="attribution">
+      <span>🔒 100% secure · instant access</span>
+    </div>
+  </div>
+</body>
+</html>
