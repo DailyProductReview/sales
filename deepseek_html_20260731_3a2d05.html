@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free traffic sources – leads + sales</title>
+  <style>
+    /* basic reset & email-safe styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #eef3f9;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 24px;
+      margin: 0;
+    }
+    .email-wrapper {
+      max-width: 680px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 2.2rem 2.4rem 2.6rem;
+      border: 1px solid #dce5f0;
+      box-shadow: 0 12px 32px -8px rgba(0, 30, 60, 0.12);
+    }
+    @media (max-width: 520px) {
+      .email-wrapper {
+        padding: 1.6rem 1.2rem 2rem;
+        border-radius: 20px;
+      }
+    }
+
+    /* header */
+    .header-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0b2a44;
+      line-height: 1.2;
+      margin-bottom: 0.1rem;
+      letter-spacing: -0.3px;
+    }
+    .header-title .big-free {
+      background: #003d77;
+      color: #ffffff;
+      padding: 0.05rem 1.1rem 0.1rem 1.3rem;
+      border-radius: 60px;
+      display: inline-block;
+      font-weight: 800;
+      font-size: 2.2rem;
+      letter-spacing: 0.5px;
+      margin-right: 0.1rem;
+      box-shadow: 0 2px 6px rgba(0, 50, 100, 0.15);
+    }
+    .header-title .light-text {
+      font-weight: 400;
+      color: #1f4973;
+    }
+
+    .sub-line {
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: #1f4973;
+      margin-top: 0.3rem;
+      margin-bottom: 2rem;
+      padding-bottom: 0.7rem;
+      border-bottom: 2px solid #dfe9f5;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 6px 14px;
+    }
+    .sub-line .highlight-tag {
+      background: #dae8f9;
+      padding: 0.1rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 500;
+      color: #00386b;
+      font-size: 0.95rem;
+    }
+
+    /* traffic list */
+    .traffic-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: 0.2rem;
+    }
+    .traffic-item {
+      background: #f8fbfe;
+      border-radius: 16px;
+      padding: 0.6rem 1.2rem 0.6rem 1.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #e2ebf6;
+      transition: 0.1s;
+      box-shadow: 0 1px 2px rgba(0, 20, 40, 0.02);
+    }
+    /* ensure good contrast for email clients */
+    .product-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0b2a44;
+      flex: 1 1 160px;
+      word-break: break-word;
+      padding: 4px 0;
+    }
+
+    /* ----- BUTTONS: clearly visible in email ----- */
+    .btn-visit {
+      display: inline-block;
+      background: #1a6bb5;
+      color: #ffffff !important;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.55rem 1.8rem;
+      border-radius: 60px;
+      text-decoration: none;
+      border: 1px solid #13518b;
+      box-shadow: 0 3px 6px rgba(20, 80, 160, 0.2);
+      text-align: center;
+      min-width: 80px;
+      letter-spacing: 0.2px;
+      transition: 0.1s;
+      /* fallback for email clients that strip styles: still visible as blue link */
+      background-color: #1a6bb5;
+      border-color: #13518b;
+      color: #ffffff;
+    }
+    .btn-visit:hover {
+      background: #13518b;
+      border-color: #0e3f6e;
+      box-shadow: 0 4px 10px rgba(20, 80, 160, 0.25);
+    }
+    /* ensure link is not underlined in email */
+    .btn-visit:link, .btn-visit:visited, .btn-visit:hover, .btn-visit:active {
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    /* footer */
+    .footer-note {
+      margin-top: 2.2rem;
+      font-size: 0.9rem;
+      color: #1f4a6e;
+      background: #ecf4fe;
+      padding: 0.7rem 1.4rem;
+      border-radius: 60px;
+      text-align: center;
+      border: 1px solid #d2e1f5;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 6px 16px;
+    }
+    .footer-note strong {
+      color: #003f77;
+    }
+    .footer-note .sep {
+      opacity: 0.4;
+      font-weight: 300;
+    }
+    .meta-hint {
+      margin-top: 1.2rem;
+      font-size: 0.7rem;
+      color: #6b8baa;
+      text-align: center;
+      border-top: 1px solid #dce8f2;
+      padding-top: 1rem;
+      opacity: 0.6;
+    }
+
+    /* mobile */
+    @media (max-width: 550px) {
+      .traffic-item {
+        padding: 0.8rem 1rem;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.6rem;
+      }
+      .product-name {
+        font-size: 1.05rem;
+      }
+      .btn-visit {
+        width: 100%;
+        padding: 0.7rem;
+        font-size: 1rem;
+        min-width: unset;
+        text-align: center;
+      }
+      .header-title {
+        font-size: 1.7rem;
+      }
+      .header-title .big-free {
+        font-size: 1.9rem;
+        padding: 0.05rem 0.9rem 0.1rem 1.1rem;
+      }
+      .sub-line {
+        font-size: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+    }
+    @media (max-width: 400px) {
+      .email-wrapper {
+        padding: 1rem 0.8rem 1.5rem;
+      }
+      .header-title .big-free {
+        font-size: 1.6rem;
+        padding: 0.05rem 0.7rem 0.1rem 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="email-wrapper">
+    <!-- header: FREE is bold & visible -->
+    <div class="header-title">
+      <span class="big-free">FREE</span>
+      <span class="light-text">traffic sources</span>
+    </div>
+    <div class="sub-line">
+      <span class="highlight-tag">build leads + sales</span>
+      <span class="light-text">— ready to use</span>
+    </div>
+
+    <!-- traffic list – no extra badges, clean -->
+    <div class="traffic-list">
+      <div class="traffic-item">
+        <span class="product-name">LeadsLeap</span>
+        <a href="https://leadsleap.com/?r=sandyarta" target="_blank" rel="noopener noreferrer" class="btn-visit">Visit</a>
+      </div>
+      <div class="traffic-item">
+        <span class="product-name">Daily Ads</span>
+        <a href="https://daily-ads.com/r/1519/homepage" target="_blank" rel="noopener noreferrer" class="btn-visit">Visit</a>
+      </div>
+      <div class="traffic-item">
+        <span class="product-name">MailOurList</span>
+        <a href="https://mailourlist.com/?rid=78693" target="_blank" rel="noopener noreferrer" class="btn-visit">Visit</a>
+      </div>
+      <div class="traffic-item">
+        <span class="product-name">MyDailyMailer</span>
+        <a href="https://mydailymailer.com/?rid=3050" target="_blank" rel="noopener noreferrer" class="btn-visit">Visit</a>
+      </div>
+      <div class="traffic-item">
+        <span class="product-name">TrafficAdBar</span>
+        <a href="https://trafficadbar.com/lexltest?prof=1" target="_blank" rel="noopener noreferrer" class="btn-visit">Visit</a>
+      </div>
+      <div class="traffic-item">
+        <span class="product-name">MisterSafeList</span>
+        <a href="https://mistersafelist.com/?rid=33985" target="_blank" rel="noopener noreferrer" class="btn-visit">Visit</a>
+      </div>
+      <div class="traffic-item">
+        <span class="product-name">LeasedAdSpace</span>
+        <a href="https://leasedadspace.com/splash/three/?aid=morabersl" target="_blank" rel="noopener noreferrer" class="btn-visit">Visit</a>
+      </div>
+      <div class="traffic-item">
+        <span class="product-name">Herculist</span>
+        <a href="https://www.herculist.com/members/index.cgi?naturallyinshape" target="_blank" rel="noopener noreferrer" class="btn-visit">Visit</a>
+      </div>
+      <div class="traffic-item">
+        <span class="product-name">ClickLeverage</span>
+        <a href="https://clickleverage.com/index.php?r=Natur" target="_blank" rel="noopener noreferrer" class="btn-visit">Visit</a>
+      </div>
+      <div class="traffic-item">
+        <span class="product-name">Mailsy</span>
+        <a href="http://mailsy.net/ref/24093" target="_blank" rel="noopener noreferrer" class="btn-visit">Visit</a>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <div class="footer-note">
+      <span><strong>All links open in new tab</strong></span>
+      <span class="sep">|</span>
+      <span>10 traffic sources</span>
+      <span class="sep">|</span>
+      <span>leads + sales</span>
+    </div>
+    <div class="meta-hint">
+      each button opens in a new window
+    </div>
+  </div>
+</body>
+</html>
